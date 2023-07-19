@@ -1,4 +1,4 @@
-# Tu Plan de Entrenamiento
+# Plan de Entrenamiento
 
 ## Introducción
 
