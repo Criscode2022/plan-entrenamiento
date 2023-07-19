@@ -1,0 +1,55 @@
+img {
+
+
+  width: 200px;
+  height: 200px;
+transition: transform 0.3s ease-in-out;
+
+
+      display: flex;
+      border-radius: 5px;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
+      text-align: left;
+      justify-content: start;
+      margin-bottom: 20pt;
+}
+
+  img:hover {
+
+      transform: scale(1.1);
+  }
+
+
+
+
+li:first-child {
+
+  list-style: none;
+}
+
+ul {
+
+  width: 50%;
+  text-align: justify;
+}
+
+
+#datos {
+  background-color: blue;
+  position: absolute;
+  bottom: auto;
+  right: auto;
+}
+
+h2 {
+
+  text-align: center;
+}
+
+@media (max-width:700px) {
+
+  ul {
+
+    width: 90%;
+}
+}
