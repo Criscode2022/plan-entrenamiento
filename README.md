@@ -1,6 +1,6 @@
 # Plan de Entrenamiento
 
-## Introducción
+## Descripción
 
 Aplicación SPA(Single-Page Application) Front-End responsiva creada en el lenguaje TypeScript con el framework Angular y la librería Angular Material. El objetivo principal de esta aplicación es mostrar las posibilidades de una aplicación de Angular, la división en componentes siguiendo un patrón de diseño MVC, los componentes de interfaz que ofrece Angular Material y la comunicación con APIS con RxJS de acuerdo con los principios de programación reactiva.
 
