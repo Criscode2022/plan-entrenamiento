@@ -1,0 +1,65 @@
+<h2>¿Quiénes somos?</h2>
+
+<p>
+  Somos un equipo multidisciplinar compuesto por profesionales de la salud de
+  diversos ámbitos, desde entrenadores personales a nutricionistas y médicos,
+  unidos por la vocación y conciencia social de hacer llegar a todo tipo de
+  personas todo el conocimiento adquirido en nuestros años de experiencia.
+</p>
+
+<p>
+  Desde este punto de partida, pusimos en marcha este proyecto con la finalidad
+  de dar respuesta a todos aquellos problemas que habíamos detectado
+  anteriormente en nuestras carreras individuales, como por ejemplo las
+  dificultades económicas para acceder a una dieta saludable y de calidad, los
+  problemas de coinciliación familiar o la falta de acceso a instalaciones
+  deportivas.
+</p>
+
+<p>
+  Trabajamos de manera directa con múltiples empresas e instituciones para que,
+  independientemente de tus condiciones personales y de tu lugar de residencia,
+  puedas llevar a cabo la transformación que desees en igualdad de
+  oportunidades.
+</p>
+
+<p>
+  Como organización declarada de interés público, contamos con financiación
+  pública que nos permite ofrecerte un precio asequible por nuestros servicios,
+  así como diversas opciones de financiación
+</p>
+
+<p>
+  Es un placer contar contigo y siempre estamos dispuestos a escuchar cualquier
+  tipo de sugerencia para seguir ofreciendo el mejor servicio posible. Para
+  ello, puede escribirnos al siguiente correo electrónico:
+  <a href="mailto:contacto@planentrenamiento.es"
+    >contacto@planentrenamiento.es</a
+  >
+</p>
+
+<h2>También te recomendamos</h2>
+
+<iframe
+  width="560"
+  height="315"
+  src="https://www.youtube-nocookie.com/embed/A5wqXRv0DIQ"
+  title="YouTube video player"
+  frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+  allowfullscreen
+></iframe>
+<div>
+  <ul id="results">
+    <li *ngFor="let video of videos">
+      <iframe
+        width="560"
+        height="315"
+        [src]="'https://www.youtube.com/embed/' + video.id.videoId"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+      ></iframe>
+    </li>
+  </ul>
+</div>

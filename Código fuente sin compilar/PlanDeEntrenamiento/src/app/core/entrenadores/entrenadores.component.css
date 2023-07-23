@@ -1,0 +1,108 @@
+
+
+.containerCard {
+  height: auto;
+  margin-bottom: 20pt;
+  width: 30%;
+}
+
+*  {
+
+  color: black;
+}
+
+a {
+
+  text-decoration: none;
+  text-align: center;
+  margin: auto;
+}
+
+#Cards {
+  display: flex;
+  flex-direction: row;
+  gap: 40pt;
+  padding: 0 10px;
+}
+
+.example-header-image {
+    background-image: url('src\assets\avatarcarla.svg');
+    background-size: cover;
+  }
+
+  .example-header-image2 {
+    background-image: url('src\assets\avatarmanuel.svg');
+    background-size: cover;
+  }
+
+  .example-header-image3 {
+    background-image: url('src\assets\avatarpilar.svg');
+    background-size: cover;
+  }
+
+
+
+
+  button {
+margin: auto;
+}
+
+@media (max-width: 1300px) {
+
+  .containerCard {
+    height: auto;
+    margin-bottom: 20pt;
+    width: 28%;
+  }
+
+
+
+}
+
+@media (max-width: 1110px) {
+
+  .containerCard * {
+
+    font-size: 0.5rem;
+  }
+
+
+
+}
+
+@media (max-width: 800px) {
+
+  .containerCard {
+    max-width: 100%;
+    min-width: 300px;
+    height: auto;
+    margin-bottom: 20pt;
+    margin: 0;
+    padding: 0;
+
+  }
+
+  #Cards {
+    flex-direction: column;
+    padding: 0;
+    margin: 0;
+  }
+
+  .containerCard * {
+
+    font-size: 1rem;
+  }
+
+  @media (max-width: 470px) {
+
+    .containerCard {
+      max-width: 90%;
+      min-width: 200px;
+
+  }
+
+}
+
+
+
+}

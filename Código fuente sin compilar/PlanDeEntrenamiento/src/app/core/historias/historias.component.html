@@ -1,0 +1,14 @@
+<h2>Conoce sus historias, ¡tú también puedes ser uno de ellos!</h2>
+
+<div *ngIf="userData">
+  <div *ngFor="let user of userData">
+    <h3>{{ user.nombre }} {{ user.apellido }}</h3>
+    <ul>
+      <li id="primero"><img [src]="user.avatar" alt="{{ user.nombre }}" /></li>
+      <li><u>Edad:</u> {{ user.edad }}</li>
+      <li>
+        <u>Testimonio:</u><em> {{ user.texto }}</em>
+      </li>
+    </ul>
+  </div>
+</div>

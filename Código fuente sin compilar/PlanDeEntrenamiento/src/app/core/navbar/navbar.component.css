@@ -1,0 +1,129 @@
+:host {
+
+  display: flex;
+  align-items: center;
+
+}
+
+#botonesMobile {
+
+  display: flex;
+  flex-direction: column;
+  gap: 10pt;
+}
+
+#botonesMobile button:first-child {
+
+  background-color: rgb(168, 70, 31);
+
+}
+
+#botonesMobile button:last-child {
+
+  background-color: orange;
+
+}
+
+#botonesMobile button:first-child:hover {
+
+  background-color: rgb(255, 64, 0);
+
+}
+
+#botonesMobile div {
+margin-top: 10pt;
+  display: flex;
+  flex-direction: column;
+  gap: 10pt;
+  justify-content: space-around;
+}
+
+#botonesMobile a {
+
+  background-color: orange;
+
+
+}
+
+@media (min-width: 831px) {
+
+  #botonesMobile {
+    display: none;
+  }
+
+  #botonesDesktop {
+    position: fixed;
+    top: 200px;
+    left: 50px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 20pt;
+    margin-left: 10pt;
+    align-items: center;
+
+  }
+
+  #botonesDesktop a {
+  text-decoration: none;
+    background-color: orange;
+    font-weight: bolder;
+    width: 165px;
+    text-align: center;
+  }
+
+
+
+  button {
+
+    background-color: rgb(168, 70, 31);
+  }
+
+  button:hover {
+
+    background-color: rgb(255, 64, 0);
+
+  }
+}
+
+@media (max-width: 1200px) {
+
+  #botonesDesktop {
+    position: fixed;
+    top: 200px;
+    left: 5px;
+  }
+
+
+
+}
+
+
+
+
+
+
+
+
+  @media (max-width: 830px) {
+
+
+    #botonesMobile {
+      position: fixed;
+      top: 30px;
+      left: 15px;
+      z-index: 10;
+
+
+}
+
+    #botonesDesktop {
+
+      display: none !important;
+    }
+
+
+
+  }
+
