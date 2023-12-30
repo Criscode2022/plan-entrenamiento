@@ -1,5 +1,7 @@
 <h2>Conoce sus historias, ¡tú también puedes ser uno de ellos!</h2>
 
+<app-insert-story></app-insert-story>
+
 <div *ngIf="userData">
   <div *ngFor="let user of userData">
     <h3>{{ user.nombre }} {{ user.apellido }}</h3>

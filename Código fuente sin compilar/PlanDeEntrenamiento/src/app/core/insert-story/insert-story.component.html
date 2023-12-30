@@ -1,0 +1,38 @@
+<form (ngSubmit)="onSubmit()">
+  <input
+    type="text"
+    [(ngModel)]="newPerson.nombre"
+    name="nombre"
+    placeholder="Nombre"
+    required
+  />
+  <input
+    type="text"
+    [(ngModel)]="newPerson.apellido"
+    name="apellido"
+    placeholder="Apellido"
+    required
+  />
+  <input
+    type="number"
+    [(ngModel)]="newPerson.edad"
+    name="edad"
+    placeholder="Edad"
+    required
+  />
+  <textarea
+    [(ngModel)]="newPerson.texto"
+    name="texto"
+    placeholder="Texto"
+    required
+  ></textarea>
+  <input
+    type="text"
+    [(ngModel)]="newPerson.avatar"
+    name="avatar"
+    placeholder="URL del Avatar"
+  />
+  <button type="submit">Agregar Persona</button>
+</form>
+
+<div *ngIf="error" class="error-message">Error: {{ error }}</div>

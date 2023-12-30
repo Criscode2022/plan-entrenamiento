@@ -26,6 +26,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { HistoriasComponent } from './historias/historias.component';
 import { HttpClientModule } from '@angular/common/http';
+import { InsertStoryComponent } from './insert-story/insert-story.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { HttpClientModule } from '@angular/common/http';
     NavbarComponent,
     AboutComponent,
     HistoriasComponent,
+    InsertStoryComponent,
   ],
   imports: [
     CommonModule,
