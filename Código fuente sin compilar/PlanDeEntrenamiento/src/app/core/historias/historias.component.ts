@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
-import { ViewportScroller } from '@angular/common';
-import { HttpClient } from '@angular/common/http';
+// historias.component.ts
+import { Component, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { StoriesService } from 'src/app/shared/stories.service';
 
 @Component({
@@ -8,18 +8,17 @@ import { StoriesService } from 'src/app/shared/stories.service';
   templateUrl: './historias.component.html',
   styleUrls: ['./historias.component.css'],
 })
-export class HistoriasComponent {
-  public userData: any;
+export class HistoriasComponent implements OnDestroy {
+  userData: any[] = [];
+  private subscription: Subscription;
 
-  constructor(
-    private http: HttpClient,
-    private viewportScroller: ViewportScroller,
-    private storiesService: StoriesService
-  ) {}
-
-  ngOnInit() {
-    this.storiesService.getUsers().subscribe((response) => {
-      this.userData = response;
+  constructor(private storiesService: StoriesService) {
+    this.subscription = this.storiesService.userData$.subscribe((data) => {
+      this.userData = data;
     });
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 }

@@ -1,3 +1,4 @@
+// insert-story.component.ts
 import { Component } from '@angular/core';
 import { StoriesService } from 'src/app/shared/stories.service';
 
@@ -20,20 +21,23 @@ export class InsertStoryComponent {
 
   onSubmit() {
     this.storiesService.addPerson(this.newPerson).subscribe({
-      next: (data) => {
-        // Limpia el formulario o muestra un mensaje de éxito
-        this.newPerson = {
-          nombre: '',
-          apellido: '',
-          edad: null,
-          texto: '',
-          avatar: '',
-        };
+      next: () => {
+        this.resetForm();
       },
       error: (error) => {
-        // Maneja errores aquí
         this.error = error.message;
       },
     });
+  }
+
+  private resetForm() {
+    this.newPerson = {
+      nombre: '',
+      apellido: '',
+      edad: null,
+      texto: '',
+      avatar: '',
+    };
+    this.error = null;
   }
 }
