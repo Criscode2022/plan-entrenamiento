@@ -30,10 +30,6 @@ export class IndicemasaComponent {
     this.cambiarColor();
     this.SharedServiceService.setData(this.IMC);
     this.SharedServiceService.getData();
-    this.openSnackBar(
-      "Ahora puedes registrar tu IMC calculado haciendo click en 'Registrar IMC' calculado",
-      '¡OK!'
-    );
 
     return this.IMC;
   }

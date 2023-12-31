@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import * as XLSX from 'xlsx';
 import { SharedServiceService } from './../../shared/shared-service.service';
 
@@ -16,11 +17,18 @@ export class AsideComponent {
   protected entrenador = '';
   protected desactivado = true;
 
-  constructor(private SharedServiceService: SharedServiceService) {
+  constructor(
+    private SharedServiceService: SharedServiceService,
+    private snackBar: MatSnackBar
+  ) {
     this.SharedServiceService.IMC$.subscribe((data) => {
       this.IMC = data;
       this.check(); // Check if all fields are filled when IMC is updated
     });
+  }
+
+  openSnackBar(message: string, action: string) {
+    this.snackBar.open(message, action, { duration: 5000 });
   }
 
   public imprimir() {
@@ -65,11 +73,7 @@ export class AsideComponent {
     }
   }
 
-  public recibido() {
-    alert(
-      '¡Listo! Tus datos han sido enviados correctamente, pronto nos pondremos en contacto contigo'
-    );
-
+  public descargar() {
     const data = {
       nombre: this.nombre,
       edad: this.edad,
@@ -82,33 +86,40 @@ export class AsideComponent {
     console.log('Data:', data);
     console.log('JSON:', json);
 
-    // Crear un libro de trabajo
+    // Create a workbook
     const wb: XLSX.WorkBook = XLSX.utils.book_new();
 
-    // Crear una hoja de trabajo con los datos
+    // Create the worksheet
     const ws: XLSX.WorkSheet = XLSX.utils.json_to_sheet([data]); // nota que data está dentro de un array []
 
-    // Añadir la hoja de trabajo al libro de trabajo
+    //Add the worksheet to the workbook
     XLSX.utils.book_append_sheet(wb, ws, 'Datos');
 
-    // Escribir el libro de trabajo en un archivo xlsx
+    // write the worbook as xlsx
     const wbout: ArrayBuffer = XLSX.write(wb, {
       bookType: 'xlsx',
       type: 'array',
     });
 
-    // Crear un blob con los datos
+    // Create a blob object with the content
     const blob = new Blob([wbout], { type: 'application/octet-stream' });
 
     // Descargar el archivo
     const url = URL.createObjectURL(blob);
 
     const a = document.createElement('a');
-    a.download = 'data.xlsx';
+    a.download = 'datos-plan.xlsx';
     a.href = url;
     a.click();
 
     // Clean up the temporary URL
     URL.revokeObjectURL(url);
+  }
+
+  public enviar() {
+    this.openSnackBar(
+      '¡Listo! Tus datos han sido enviados correctamente, pronto nos pondremos en contacto contigo',
+      'Cerrar'
+    );
   }
 }

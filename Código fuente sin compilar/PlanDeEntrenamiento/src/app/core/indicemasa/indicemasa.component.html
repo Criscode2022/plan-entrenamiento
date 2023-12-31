@@ -24,7 +24,7 @@
   >
 </div>
 
-<form action="">
+<form>
   <mat-form-field appearance="fill">
     <mat-label>Peso en Kg</mat-label>
     <input
@@ -57,35 +57,30 @@
   >
     Calcular IMC
   </button>
-
-  <span id="SpanAltura" *ngIf="altura > 250" style="color: red"
-    >Introduce una altura inferior</span
-  >
-
-  <ul>
-    <li>Peso: {{ peso }}</li>
-    <li>Altura: {{ altura }}</li>
-  </ul>
-
-  <ul *ngIf="!!IMC">
-    <li id="resultado">IMC: {{ IMC }}</li>
-
-    <span *ngIf="IMC >= 30" [ngStyle]="{ color: colorTextoIMC }"
-      >Tu IMC es superior al recomendado, tienes obesidad</span
-    >
-    <span *ngIf="IMC >= 25 && IMC < 30" [ngStyle]="{ color: colorTextoIMC }"
-      >Tu IMC es superior al recomendado, tienes sobrepeso</span
-    >
-    <span *ngIf="IMC >= 18.5 && IMC < 25" [ngStyle]="{ color: colorTextoIMC }"
-      >Tu IMC es correcto</span
-    >
-    <span *ngIf="IMC < 18.5" [ngStyle]="{ color: colorTextoIMC }"
-      >Tu IMC es inferior al recomendado, tienes bajo peso</span
-    >
-  </ul>
-
-  <app-dialogo></app-dialogo>
 </form>
+
+<span id="SpanAltura" *ngIf="altura > 250" style="color: red"
+  >Introduce una altura inferior</span
+>
+
+<ul *ngIf="!!IMC">
+  <li id="resultado">IMC: {{ IMC }}</li>
+
+  <span *ngIf="IMC >= 30" [ngStyle]="{ color: colorTextoIMC }"
+    >Tu IMC es superior al recomendado, tienes obesidad</span
+  >
+  <span *ngIf="IMC >= 25 && IMC < 30" [ngStyle]="{ color: colorTextoIMC }"
+    >Tu IMC es superior al recomendado, tienes sobrepeso</span
+  >
+  <span *ngIf="IMC >= 18.5 && IMC < 25" [ngStyle]="{ color: colorTextoIMC }"
+    >Tu IMC es correcto</span
+  >
+  <span *ngIf="IMC < 18.5" [ngStyle]="{ color: colorTextoIMC }"
+    >Tu IMC es inferior al recomendado, tienes bajo peso</span
+  >
+</ul>
+
+<app-dialogo></app-dialogo>
 
 <table>
   <tr>

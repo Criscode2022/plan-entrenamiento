@@ -53,11 +53,21 @@
   <p>
     <button
       mat-button
-      (click)="recibido()"
+      (click)="enviar()"
       color="accent"
       [disabled]="desactivado"
     >
       Enviar datos
+    </button>
+  </p>
+  <p>
+    <button
+      mat-button
+      (click)="descargar()"
+      color="accent"
+      [disabled]="desactivado"
+    >
+      Descargar datos
     </button>
   </p>
 </div>
