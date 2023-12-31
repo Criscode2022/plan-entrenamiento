@@ -14,6 +14,11 @@ h1 {
 
 @media (max-width: 700px) {
   :host {
-    margin-left: 60pt;
+    margin-left: 50pt;
+  }
+
+  .router-outlet-container {
+    margin: 20pt;
+    min-height: 100vh;
   }
 }
