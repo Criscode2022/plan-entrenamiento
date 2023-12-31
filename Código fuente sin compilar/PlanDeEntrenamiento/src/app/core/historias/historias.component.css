@@ -7,7 +7,7 @@ img {
   border-radius: 5px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
   text-align: left;
-  justify-content: start;
+  justify-content: flex-start;
   margin-bottom: 20pt;
 }
 
