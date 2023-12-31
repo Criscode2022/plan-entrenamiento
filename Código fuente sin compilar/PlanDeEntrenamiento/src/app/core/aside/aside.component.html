@@ -48,14 +48,11 @@
     <button mat-button (click)="borrar()" color="accent">Borrar datos</button>
   </p>
   <p>
-    <button mat-button type="submit" (click)="imprimir()" color="accent">
-      Vista previa
-    </button>
+    <button mat-button (click)="imprimir()" color="accent">Vista previa</button>
   </p>
   <p>
     <button
       mat-button
-      type="submit"
       (click)="recibido()"
       color="accent"
       [disabled]="desactivado"
@@ -69,18 +66,18 @@
   <p>Estos son tus datos:</p>
 
   <li>
-    Tu nombre es <span class="destacado">{{ datos[0] }}</span>
+    Tu nombre es <strong>{{ datos[0] }}</strong>
   </li>
   <li>
-    Tienes <span class="destacado">{{ datos[1] }} años</span>
+    Tienes <strong>{{ datos[1] }}</strong> años
   </li>
   <li>
-    Tu IMC es <span class="destacado">{{ IMC }}</span>
+    Tu IMC es <strong>{{ IMC }}</strong>
   </li>
   <li>
-    Tu objetivo es <span class="destacado">{{ selectOption }}</span>
+    Tu objetivo es <strong>{{ selectOption }}</strong>
   </li>
   <li>
-    Tu entrenador/a va a ser <span class="destacado">{{ entrenador }}</span>
+    Tu entrenador/a va a ser <strong>{{ entrenador }}</strong>
   </li>
 </ul>

@@ -7,7 +7,7 @@
 
   <!-- Apellido -->
   <mat-form-field appearance="fill">
-    <mat-label>Apellido</mat-label>
+    <mat-label>Apellidos</mat-label>
     <input matInput [(ngModel)]="newPerson.apellido" name="apellido" required />
   </mat-form-field>
 
@@ -19,6 +19,8 @@
       type="number"
       [(ngModel)]="newPerson.edad"
       name="edad"
+      min="0"
+      max="120"
       required
     />
   </mat-form-field>
@@ -41,7 +43,7 @@
   </mat-form-field>
 
   <!-- Botón de envío -->
-  <button mat-button color="accent" type="submit">Agregar Persona</button>
+  <button mat-button color="accent" type="submit">Enviar</button>
 </form>
 
 <!-- Mensaje de error -->
