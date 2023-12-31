@@ -12,6 +12,10 @@ button {
   table {
     display: none;
   }
+
+  button {
+    width: 90%;
+  }
 }
 
 div:first-of-type {
