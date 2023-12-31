@@ -1,38 +1,48 @@
 <form (ngSubmit)="onSubmit()">
-  <input
-    type="text"
-    [(ngModel)]="newPerson.nombre"
-    name="nombre"
-    placeholder="Nombre"
-    required
-  />
-  <input
-    type="text"
-    [(ngModel)]="newPerson.apellido"
-    name="apellido"
-    placeholder="Apellido"
-    required
-  />
-  <input
-    type="number"
-    [(ngModel)]="newPerson.edad"
-    name="edad"
-    placeholder="Edad"
-    required
-  />
-  <textarea
-    [(ngModel)]="newPerson.texto"
-    name="texto"
-    placeholder="Texto"
-    required
-  ></textarea>
-  <input
-    type="text"
-    [(ngModel)]="newPerson.avatar"
-    name="avatar"
-    placeholder="URL del Avatar"
-  />
-  <button type="submit">Agregar Persona</button>
+  <!-- Nombre -->
+  <mat-form-field appearance="fill">
+    <mat-label>Nombre</mat-label>
+    <input matInput [(ngModel)]="newPerson.nombre" name="nombre" required />
+  </mat-form-field>
+
+  <!-- Apellido -->
+  <mat-form-field appearance="fill">
+    <mat-label>Apellido</mat-label>
+    <input matInput [(ngModel)]="newPerson.apellido" name="apellido" required />
+  </mat-form-field>
+
+  <!-- Edad -->
+  <mat-form-field appearance="fill">
+    <mat-label>Edad</mat-label>
+    <input
+      matInput
+      type="number"
+      [(ngModel)]="newPerson.edad"
+      name="edad"
+      required
+    />
+  </mat-form-field>
+
+  <!-- Texto -->
+  <mat-form-field appearance="fill">
+    <mat-label>Texto</mat-label>
+    <textarea
+      matInput
+      [(ngModel)]="newPerson.texto"
+      name="texto"
+      required
+    ></textarea>
+  </mat-form-field>
+
+  <!-- URL del Avatar -->
+  <mat-form-field appearance="fill">
+    <mat-label>URL del Avatar</mat-label>
+    <input matInput type="text" [(ngModel)]="newPerson.avatar" name="avatar" />
+  </mat-form-field>
+
+  <!-- Botón de envío -->
+  <button mat-button color="accent" type="submit">Agregar Persona</button>
 </form>
 
+<!-- Mensaje de error -->
 <div *ngIf="error" class="error-message">Error: {{ error }}</div>

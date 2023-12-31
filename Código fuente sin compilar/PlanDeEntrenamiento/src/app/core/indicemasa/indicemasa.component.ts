@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { SharedServiceService } from 'src/app/shared/shared-service.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { SharedServiceService } from 'src/app/shared/shared-service.service';
 
 @Component({
   selector: 'app-indicemasa',
@@ -8,18 +8,16 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrls: ['./indicemasa.component.css'],
 })
 export class IndicemasaComponent {
-  IMC: number = 0;
-  peso: number;
-  altura: number = 0;
+  IMC!: number;
+  peso!: number;
+  altura!: number;
   colorTextoIMC: string = '';
   exceso: boolean = false;
 
   constructor(
     private SharedServiceService: SharedServiceService,
     private snackBar: MatSnackBar
-  ) {
-    this.peso = 0;
-  }
+  ) {}
 
   openSnackBar(message: string, action: string) {
     this.snackBar.open(message, action, { duration: 5000 });
@@ -51,12 +49,4 @@ export class IndicemasaComponent {
   logValues(): void {
     console.log(`Peso: ${this.peso}, Altura: ${this.altura}`);
   }
-
-  isNanNumber(value: any): boolean {
-    return isNaN(value);
-  }
-
-  ngOnInit() {}
-
-  ngAfterViewInit() {}
 }

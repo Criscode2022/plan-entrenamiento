@@ -1,9 +1,9 @@
-<h2>Tus datos personales</h2>
+<h2>Solicita tu plan personalizado</h2>
 
 <form action="">
   <mat-form-field appearance="fill">
     <mat-label>Nombre</mat-label>
-    <input matInput [(ngModel)]="nombre" name="nombre" />
+    <input matInput [(ngModel)]="nombre" name="nombre" (input)="check()" />
   </mat-form-field>
   <mat-form-field appearance="fill">
     <mat-label>Edad</mat-label>
@@ -13,28 +13,21 @@
       [(ngModel)]="edad"
       name="edad"
       min="0"
+      (input)="check()"
     /> </mat-form-field
   ><mat-form-field
     appearance="fill"
-    matTooltip="Puedes calcular tu IMC en la sección de la barra lateral izquierda correspondiente"
+    matTooltip="Puedes calcular tu IMC en la sección 'Calcular IMC'"
   >
     <mat-label>IMC</mat-label>
-    <input
-      matInput
-      type="number"
-      [(ngModel)]="IMC"
-      name="IMC"
-      readonly
-      [disabled]="this.desactivado === true"
-      [value]="sharedData"
-    />
+    <input matInput type="number" [(ngModel)]="IMC" name="IMC" readonly />
   </mat-form-field>
   <mat-form-field appearance="fill">
     <mat-label>Objetivo</mat-label>
     <mat-select
       [(ngModel)]="selectOption"
       name="selectOption"
-      (selectionChange)="asignarentrenador(selectOption)"
+      (selectionChange)="asignarentrenador(selectOption); check()"
     >
       <mat-option value="seleccionar" disabled
         >Selecciona tu objetivo</mat-option
@@ -52,45 +45,20 @@
 
 <div id="botones">
   <p>
-    <button mat-button (click)="recibirdatos()" color="accent">
-      Registrar IMC calculado
+    <button mat-button (click)="borrar()" color="accent">Borrar datos</button>
+  </p>
+  <p>
+    <button mat-button type="submit" (click)="imprimir()" color="accent">
+      Vista previa
     </button>
   </p>
   <p>
-    <button mat-button (click)="borrar()" color="accent">Borrar datos</button>
-  </p>
-  <p
-    matTooltip="Cuando hayas completado el formulario, este botón estará habilitado"
-    [matTooltipDisabled]="
-      !(sharedData === 0 || nombre === '' || edad === '' || selectOption === '')
-    "
-  >
     <button
       mat-button
-      [disabled]="
-        sharedData === 0 || nombre === '' || edad === '' || selectOption === ''
-      "
-      type="submit"
-      (click)="imprimir()"
-      color="accent"
-    >
-      Imprimir datos en pantalla
-    </button>
-  </p>
-  <p
-    matTooltip="Cuando hayas completado el formulario, este botón estará habilitado"
-    [matTooltipDisabled]="
-      !(sharedData === 0 || nombre === '' || edad === '' || selectOption === '')
-    "
-  >
-    <button
-      mat-button
-      [disabled]="
-        sharedData === 0 || nombre === '' || edad === '' || selectOption === ''
-      "
       type="submit"
       (click)="recibido()"
       color="accent"
+      [disabled]="desactivado"
     >
       Enviar datos
     </button>
@@ -107,7 +75,7 @@
     Tienes <span class="destacado">{{ datos[1] }} años</span>
   </li>
   <li>
-    Tu IMC es <span class="destacado">{{ sharedData }}</span>
+    Tu IMC es <span class="destacado">{{ IMC }}</span>
   </li>
   <li>
     Tu objetivo es <span class="destacado">{{ selectOption }}</span>

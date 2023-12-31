@@ -8,25 +8,27 @@ import { SharedServiceService } from './../../shared/shared-service.service';
   styleUrls: ['./aside.component.css'],
 })
 export class AsideComponent {
-  datos: string[] = [];
-  IMC = '';
-  nombre = '';
-  edad = '';
-  public sharedData: number = 0;
-  selectOption: string = '';
-  entrenador = '';
-  desactivado: boolean = true;
+  protected datos: string[] = [];
+  protected IMC!: number;
+  protected nombre = '';
+  protected edad = '';
+  protected selectOption = '';
+  protected entrenador = '';
+  protected desactivado = true;
 
-  constructor(private SharedServiceService: SharedServiceService) {}
+  constructor(private SharedServiceService: SharedServiceService) {
+    this.SharedServiceService.IMC$.subscribe((data) => {
+      this.IMC = data;
+      this.check(); // Check if all fields are filled when IMC is updated
+    });
+  }
 
   public imprimir() {
-    this.sharedData = this.SharedServiceService.getData();
     this.datos = [];
     this.datos.push(this.nombre);
-    this.datos.push(this.edad);
+    this.datos.push(this.edad.toString());
     this.datos.push(this.selectOption);
     this.datos.push(this.entrenador);
-    this.datos.push(String(this.sharedData));
     console.log(this.datos);
   }
 
@@ -35,15 +37,18 @@ export class AsideComponent {
     this.nombre = '';
     this.selectOption = '';
     this.edad = '';
-    this.IMC = '';
-    this.sharedData = 0;
-    this.desactivado = true;
+    this.IMC = 0;
   }
-  public recibirdatos() {
-    this.sharedData = this.SharedServiceService.getData();
-    if (this.sharedData !== 0) {
-      this.desactivado = false;
-    }
+
+  public check() {
+    console.log('checking...');
+    console.log(this.edad);
+    this.desactivado = !(
+      this.nombre.trim() !== '' &&
+      this.edad &&
+      this.selectOption !== '' &&
+      this.IMC > 0
+    );
   }
 
   public asignarentrenador(entrenador: string) {
@@ -70,7 +75,7 @@ export class AsideComponent {
       edad: this.edad,
       objetivo: this.selectOption,
       entrenador: this.entrenador,
-      imc: this.sharedData,
+      imc: this.IMC,
     };
 
     const json = JSON.stringify(data);

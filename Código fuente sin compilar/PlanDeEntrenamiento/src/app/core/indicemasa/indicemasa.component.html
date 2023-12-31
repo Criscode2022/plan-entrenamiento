@@ -67,7 +67,7 @@
     <li>Altura: {{ altura }}</li>
   </ul>
 
-  <ul *ngIf="IMC != 0 && isNanNumber(IMC) == false">
+  <ul *ngIf="!!IMC">
     <li id="resultado">IMC: {{ IMC }}</li>
 
     <span *ngIf="IMC >= 30" [ngStyle]="{ color: colorTextoIMC }"

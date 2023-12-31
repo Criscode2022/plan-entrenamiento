@@ -1,0 +1,13 @@
+form {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  margin: 0 auto;
+  gap: 1rem;
+}
+
+button {
+  background-color: #007bffcd;
+  width: 100%;
+  padding: 20pt 0;
+}
