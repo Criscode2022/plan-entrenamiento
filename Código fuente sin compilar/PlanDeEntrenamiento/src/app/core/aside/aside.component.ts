@@ -87,7 +87,7 @@ export class AsideComponent {
     const wb: XLSX.WorkBook = XLSX.utils.book_new();
 
     // Create the worksheet
-    const ws: XLSX.WorkSheet = XLSX.utils.json_to_sheet([data]); // nota que data está dentro de un array []
+    const ws: XLSX.WorkSheet = XLSX.utils.json_to_sheet([data]);
 
     //Add the worksheet to the workbook
     XLSX.utils.book_append_sheet(wb, ws, 'Datos');
