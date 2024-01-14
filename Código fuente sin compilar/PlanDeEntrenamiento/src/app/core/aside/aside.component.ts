@@ -23,7 +23,7 @@ export class AsideComponent {
   ) {
     this.SharedServiceService.IMC$.subscribe((data) => {
       this.IMC = data;
-      this.check(); // Check if all fields are filled when IMC is updated
+      this.check();
     });
   }
 
@@ -37,7 +37,6 @@ export class AsideComponent {
     this.datos.push(this.edad.toString());
     this.datos.push(this.selectOption);
     this.datos.push(this.entrenador);
-    console.log(this.datos);
   }
 
   public borrar() {
@@ -49,8 +48,6 @@ export class AsideComponent {
   }
 
   public check() {
-    console.log('checking...');
-    console.log(this.edad);
     this.desactivado = !(
       this.nombre.trim() !== '' &&
       this.edad &&

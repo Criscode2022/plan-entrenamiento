@@ -25,8 +25,7 @@ export class IndicemasaComponent {
 
   public calcularIMC(altura: number, peso: number) {
     const metros = altura / 100;
-    this.IMC = +(peso / (metros * metros)).toFixed(2); // Convert result to number with two decimal places
-    console.log(`altura: ${altura}, peso: ${peso}, IMC: ${this.IMC}`);
+    this.IMC = +(peso / (metros * metros)).toFixed(2);
     this.cambiarColor();
     this.SharedServiceService.setData(this.IMC);
     this.SharedServiceService.getData();
@@ -40,9 +39,5 @@ export class IndicemasaComponent {
     } else {
       this.colorTextoIMC = 'green';
     }
-  }
-
-  logValues(): void {
-    console.log(`Peso: ${this.peso}, Altura: ${this.altura}`);
   }
 }

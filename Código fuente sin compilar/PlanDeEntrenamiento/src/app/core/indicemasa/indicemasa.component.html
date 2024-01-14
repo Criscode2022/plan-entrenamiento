@@ -27,26 +27,12 @@
 <form>
   <mat-form-field appearance="fill">
     <mat-label>Peso en Kg</mat-label>
-    <input
-      matInput
-      type="number"
-      [(ngModel)]="peso"
-      name="peso"
-      (input)="logValues()"
-      min="0"
-    />
+    <input matInput type="number" [(ngModel)]="peso" name="peso" min="0" />
   </mat-form-field>
 
   <mat-form-field appearance="fill">
     <mat-label>Altura en cm</mat-label>
-    <input
-      matInput
-      type="number"
-      [(ngModel)]="altura"
-      name="altura"
-      (input)="logValues()"
-      min="0"
-    />
+    <input matInput type="number" [(ngModel)]="altura" name="altura" min="0" />
   </mat-form-field>
 
   <button
