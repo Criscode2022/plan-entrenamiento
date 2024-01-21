@@ -7,7 +7,6 @@
   >
     <mat-icon>home</mat-icon>
   </button>
-  <a routerLink="/about" mat-raised-button>Sobre nosotros</a>
   <a routerLink="/indicemasa" mat-raised-button>Calcular IMC</a>
   <a routerLink="/entrenadores" mat-raised-button>Entrenadores</a>
   <a routerLink="/historias" mat-raised-button>Experiencias</a>
@@ -28,9 +27,6 @@
     }}</mat-icon>
   </button>
   <div *ngIf="isHidden" id="smalllinks">
-    <a routerLink="/about" (click)="toggleGroup()" mat-raised-button
-      >Sobre nosotros</a
-    >
     <a routerLink="/indicemasa" (click)="toggleGroup()" mat-raised-button
       >Calcular IMC</a
     >
