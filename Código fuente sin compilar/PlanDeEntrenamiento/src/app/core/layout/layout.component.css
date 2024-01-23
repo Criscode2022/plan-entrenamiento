@@ -27,11 +27,11 @@
 
   :host > :nth-child(2) {
     flex: 2 0 auto;
-    height: 85vh;
+    height: 80vh;
     overflow-y: scroll;
   }
 
   :host > :nth-child(3) {
-    margin-top: 1pt;
+    margin-top: 0.3pt;
   }
 }
