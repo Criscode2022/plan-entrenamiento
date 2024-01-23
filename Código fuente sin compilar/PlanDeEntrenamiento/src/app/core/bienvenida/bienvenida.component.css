@@ -1,5 +1,5 @@
 p {
-  margin: 15pt 0 15pt 0;
+  margin: 15pt 0;
   text-align: justify;
 }
 
@@ -23,20 +23,24 @@ p:last-of-type {
   margin-top: 40pt;
 }
 
-@media (max-width: 1370px) {
-  img {
-    width: 200px;
-    height: 200px;
-  }
-}
-
 @media (max-width: 850px) {
   img {
     width: 250px;
     height: 250px;
   }
 
+  a {
+    text-align: center;
+    display: block;
+  }
+
   div {
     display: none;
+  }
+}
+
+@media (min-width: 851px) {
+  img {
+    float: left;
   }
 }
