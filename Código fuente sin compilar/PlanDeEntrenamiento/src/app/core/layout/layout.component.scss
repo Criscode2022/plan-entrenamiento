@@ -32,9 +32,11 @@
   }
 
   :host > :nth-child(3) {
-    margin: 1px 5px 0 5px;
+    margin: 0 5px 0 5px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.8);
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
+    z-index: 100;
+    border: solid 1px black;
   }
 }
