@@ -23,11 +23,13 @@ div h2 {
   img {
     width: 250px;
     height: 250px;
+    margin: auto;
   }
 
   a {
     text-align: center;
     display: block;
+    margin: 20px 0 20px 0;
   }
 
   div {
