@@ -12,20 +12,11 @@ img {
   height: 350px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
   border-radius: 10px;
-  float: left;
   margin: 0 20px 10px 0;
 }
 
 div h2 {
   text-align: left;
-}
-
-#imghombre {
-  float: left;
-}
-
-div {
-  float: clear-both;
 }
 
 p:last-of-type {
@@ -40,14 +31,6 @@ p:last-of-type {
 }
 
 @media (max-width: 850px) {
-  #images {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    gap: 20pt;
-    align-items: center;
-  }
-
   img {
     width: 250px;
     height: 250px;
