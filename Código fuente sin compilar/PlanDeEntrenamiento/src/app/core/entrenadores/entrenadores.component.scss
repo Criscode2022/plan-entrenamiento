@@ -27,19 +27,25 @@ a {
   align-items: center;
 }
 
+$background-size-cover: cover;
+
+%background-cover {
+  background-size: $background-size-cover;
+}
+
 .example-header-image {
-  background-image: url("src\assets\avatarcarla.svg");
-  background-size: cover;
+  @extend %background-cover;
+  background-image: url("/assets/avatarcarla.svg");
 }
 
 .example-header-image2 {
-  background-image: url("src\assets\avatarmanuel.svg");
-  background-size: cover;
+  @extend %background-cover;
+  background-image: url("/assets/avatarmanuel.svg");
 }
 
 .example-header-image3 {
-  background-image: url("src\assets\avatarpilar.svg");
-  background-size: cover;
+  @extend %background-cover;
+  background-image: url("/assets/avatarpilar.svg");
 }
 
 button {

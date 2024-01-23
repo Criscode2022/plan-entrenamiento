@@ -6,7 +6,7 @@ import { StoriesService } from 'src/app/shared/stories.service';
 @Component({
   selector: 'app-historias',
   templateUrl: './historias.component.html',
-  styleUrls: ['./historias.component.css'],
+  styleUrls: ['./historias.component.scss'],
 })
 export class HistoriasComponent implements OnDestroy {
   userData: any[] = [];

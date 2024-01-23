@@ -5,7 +5,7 @@ import { StoriesService } from 'src/app/shared/stories.service';
 @Component({
   selector: 'app-insert-story',
   templateUrl: './insert-story.component.html',
-  styleUrls: ['./insert-story.component.css'],
+  styleUrls: ['./insert-story.component.scss'],
 })
 export class InsertStoryComponent {
   newPerson = {

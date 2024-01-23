@@ -5,7 +5,7 @@ import { SharedServiceService } from 'src/app/shared/shared-service.service';
 @Component({
   selector: 'app-indicemasa',
   templateUrl: './indicemasa.component.html',
-  styleUrls: ['./indicemasa.component.css'],
+  styleUrls: ['./indicemasa.component.scss'],
 })
 export class IndicemasaComponent {
   IMC!: number;
