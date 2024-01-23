@@ -27,7 +27,7 @@
 
   :host > :nth-child(2) {
     flex: 2 0 auto;
-    height: 70vh;
+    height: 90vh;
     overflow-y: scroll;
   }
 

@@ -8,8 +8,8 @@ p:nth-last-of-type(1) {
 }
 
 img {
-  width: 400px;
-  height: 400px;
+  width: 350px;
+  height: 350px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
   border-radius: 10px;
   float: left;
@@ -40,30 +40,20 @@ p:last-of-type {
 }
 
 @media (max-width: 850px) {
+  #images {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    gap: 20pt;
+    align-items: center;
+  }
+
   img {
-    width: 150;
-    height: 150px;
+    width: 250px;
+    height: 250px;
   }
 
-  @media (max-width: 850px) {
-    #images {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-around;
-      gap: 20pt;
-      align-items: center;
-    }
-
-    img {
-      width: 300px;
-      height: 300px;
-    }
-  }
-
-  @media (max-width: 850px) {
-    img {
-      width: 250px;
-      height: 250px;
-    }
+  div {
+    display: none;
   }
 }
