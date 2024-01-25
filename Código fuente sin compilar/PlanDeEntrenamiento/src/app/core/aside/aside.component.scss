@@ -27,13 +27,18 @@ h2 {
   font-weight: bold;
 }
 
+@media (min-width: 701px) {
+
+  mat-icon {
+    display: none;
+  }
+}
+
 @media (max-width: 700px) {
   :host {
     border-top: solid black 1px;
     border-left: 0;
   }
 
-  mat-icon {
-    display: none;
-  }
+
 }
