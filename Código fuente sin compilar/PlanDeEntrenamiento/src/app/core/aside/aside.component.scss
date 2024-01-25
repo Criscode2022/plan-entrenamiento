@@ -6,6 +6,11 @@
   border-left: solid black 1px;
 }
 
+mat-icon {
+  margin: auto;
+  display: flex;
+}
+
 mat-form-field {
   width: 100%;
 }
@@ -26,5 +31,9 @@ h2 {
   :host {
     border-top: solid black 1px;
     border-left: 0;
+  }
+
+  mat-icon {
+    display: none;
   }
 }
