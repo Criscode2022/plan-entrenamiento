@@ -27,27 +27,43 @@
 <form>
   <mat-form-field appearance="fill">
     <mat-label>Peso en Kg</mat-label>
-    <input matInput type="number" [(ngModel)]="peso" name="peso" min="0" />
+    <input
+      matInput
+      type="number"
+      [(ngModel)]="peso"
+      name="peso"
+      min="0"
+      max="400"
+    />
+    <mat-error *ngIf="peso && peso > 400">
+      Introduce un peso inferior
+    </mat-error>
   </mat-form-field>
 
   <mat-form-field appearance="fill">
     <mat-label>Altura en cm</mat-label>
-    <input matInput type="number" [(ngModel)]="altura" name="altura" min="0" />
+    <input
+      matInput
+      type="number"
+      [(ngModel)]="altura"
+      name="altura"
+      min="0"
+      max="250"
+    />
+    <mat-error *ngIf="altura && altura > 250">
+      Introduce una altura inferior
+    </mat-error>
   </mat-form-field>
 
   <button
     mat-button
-    [disabled]="altura > 250"
+    [disabled]="altura && altura > 250"
     color="accent"
     (click)="calcularIMC(altura, peso)"
   >
     Calcular IMC
   </button>
 </form>
-
-<span id="SpanAltura" *ngIf="altura > 250" style="color: red"
-  >Introduce una altura inferior</span
->
 
 <ul *ngIf="!!IMC">
   <li id="resultado">IMC: {{ IMC }}</li>

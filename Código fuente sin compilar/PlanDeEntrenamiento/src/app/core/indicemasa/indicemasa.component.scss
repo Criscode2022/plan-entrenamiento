@@ -38,15 +38,14 @@ div:first-of-type a {
 mat-form-field {
   display: block;
   width: 25%;
+  padding: 10px 0 10px 0 ;
 }
 
 mat-form-field:first-child {
-  margin: 40pt 0 0 0;
+  margin: 28px 0 0 0;
 }
 
-mat-form-field:nth-child(2) {
-  margin: 0;
-}
+
 
 table,
 th,
