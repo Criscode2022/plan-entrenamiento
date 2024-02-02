@@ -43,36 +43,18 @@
       >
     </mat-select>
   </mat-form-field>
-</form>
 
-<div id="botones">
-  <p>
-    <button mat-button (click)="borrar()" color="accent">Borrar datos</button>
-  </p>
-  <p>
-    <button mat-button (click)="imprimir()" color="accent">Vista previa</button>
-  </p>
-  <p>
-    <button
-      mat-button
-      (click)="enviar()"
-      color="accent"
-      [disabled]="desactivado"
-    >
-      Enviar datos
-    </button>
-  </p>
-  <p>
-    <button
-      mat-button
-      (click)="descargar()"
-      color="accent"
-      [disabled]="desactivado"
-    >
-      Descargar datos
-    </button>
-  </p>
-</div>
+  <btnComponent [buttonText]="'Borrar datos'" (click)="borrar()"></btnComponent>
+
+  <btnComponent [buttonText]="'Imprimir'" (click)="imprimir()"></btnComponent>
+
+  <btnComponent [buttonText]="'Enviar datos'" (click)="enviar()"></btnComponent>
+
+  <btnComponent
+    [buttonText]="'Descargar datos'"
+    (click)="descargar()"
+  ></btnComponent>
+</form>
 
 <ul *ngIf="datos.length > 0">
   <p>Estos son tus datos:</p>
