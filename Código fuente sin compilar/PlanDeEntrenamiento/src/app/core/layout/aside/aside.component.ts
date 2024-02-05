@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import * as XLSX from 'xlsx';
-import { SharedServiceService } from './../../shared/shared-service.service';
+import { SharedDataService } from '../../Services/shared-data/shared-service.service';
 
 @Component({
   selector: 'app-aside',
@@ -18,10 +18,10 @@ export class AsideComponent {
   protected desactivado = true;
 
   constructor(
-    private SharedServiceService: SharedServiceService,
+    private SharedDataService: SharedDataService,
     private snackBar: MatSnackBar,
   ) {
-    this.SharedServiceService.IMC$.subscribe((data) => {
+    this.SharedDataService.IMC$.subscribe((data) => {
       this.IMC = data;
       this.check();
     });

@@ -1,7 +1,7 @@
 // historias.component.ts
 import { Component, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { StoriesService } from 'src/app/shared/stories.service';
+import { StoriesService } from '../../Services/stories/stories.service';
 
 @Component({
   selector: 'app-historias',

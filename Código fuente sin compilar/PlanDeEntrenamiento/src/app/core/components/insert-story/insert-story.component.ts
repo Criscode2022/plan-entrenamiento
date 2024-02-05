@@ -1,17 +1,18 @@
-// insert-story.component.ts
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { StoriesService } from 'src/app/shared/stories.service';
+import { Subscription } from 'rxjs';
 import { strValue } from 'src/main';
+import { StoriesService } from '../../Services/stories/stories.service';
 
 @Component({
   selector: 'app-insert-story',
   templateUrl: './insert-story.component.html',
   styleUrls: ['./insert-story.component.scss'],
 })
-export class InsertStoryComponent {
+export class InsertStoryComponent implements OnDestroy {
   storyForm: FormGroup;
   error: strValue = null;
+  private subscription: Subscription = new Subscription();
 
   constructor(
     private formBuilder: FormBuilder,
@@ -32,6 +33,7 @@ export class InsertStoryComponent {
         [Validators.required, Validators.min(14), Validators.max(110)],
       ],
       texto: ['', [Validators.required]],
+      avatar: '',
     });
   }
 
@@ -40,14 +42,17 @@ export class InsertStoryComponent {
   onSubmit() {
     if (this.storyForm.valid) {
       const newPerson = this.storyForm.value;
-      this.storiesService.addPerson(newPerson).subscribe({
-        next: () => {
-          this.resetForm();
-        },
-        error: (error) => {
-          this.error = error.message;
-        },
-      });
+      const addPersonSubscription = this.storiesService
+        .addPerson(newPerson)
+        .subscribe({
+          next: () => {
+            this.resetForm();
+          },
+          error: (error) => {
+            this.error = error.message;
+          },
+        });
+      this.subscription.add(addPersonSubscription);
     }
   }
 
@@ -60,5 +65,9 @@ export class InsertStoryComponent {
       avatar: '',
     });
     this.error = null;
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 }
