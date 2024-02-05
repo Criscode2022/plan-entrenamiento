@@ -55,32 +55,33 @@
     </mat-error>
   </mat-form-field>
 
-  <button
-    mat-button
-    [disabled]="altura && altura > 250"
-    color="accent"
+  <btnComponent
+    [disabled]="
+      altura === null ||
+      peso === null ||
+      altura > 250 ||
+      peso === 0 ||
+      peso > 400
+    "
+    [buttonText]="'Calcular IMC'"
     (click)="calcularIMC(altura, peso)"
-  >
-    Calcular IMC
-  </button>
+  ></btnComponent>
 </form>
 
-<ul *ngIf="!!IMC">
-  <li id="resultado">IMC: {{ IMC }}</li>
+<ng-container *ngIf="!!IMC">
+  <div id="resultado">IMC: {{ IMC }}</div>
 
-  <span *ngIf="IMC >= 30" [ngStyle]="{ color: colorTextoIMC }"
-    >Tu IMC es superior al recomendado, tienes obesidad</span
-  >
-  <span *ngIf="IMC >= 25 && IMC < 30" [ngStyle]="{ color: colorTextoIMC }"
-    >Tu IMC es superior al recomendado, tienes sobrepeso</span
-  >
-  <span *ngIf="IMC >= 18.5 && IMC < 25" [ngStyle]="{ color: colorTextoIMC }"
-    >Tu IMC es correcto</span
-  >
-  <span *ngIf="IMC < 18.5" [ngStyle]="{ color: colorTextoIMC }"
-    >Tu IMC es inferior al recomendado, tienes bajo peso</span
-  >
-</ul>
+  <mat-error *ngIf="IMC >= 30">
+    Tu IMC es superior al recomendado, tienes obesidad
+  </mat-error>
+  <mat-error *ngIf="IMC >= 25 && IMC < 30">
+    Tu IMC es superior al recomendado, tienes sobrepeso
+  </mat-error>
+  <div *ngIf="IMC >= 18.5 && IMC < 25">Tu IMC es correcto</div>
+  <mat-error *ngIf="IMC < 18.5">
+    Tu IMC es inferior al recomendado, tienes bajo peso
+  </mat-error>
+</ng-container>
 
 <app-dialogo></app-dialogo>
 
