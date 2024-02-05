@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { SharedServiceService } from 'src/app/shared/shared-service.service';
 import { numValue, strValue } from 'src/main';
@@ -13,15 +14,27 @@ export class IndicemasaComponent {
   protected peso: numValue;
   protected altura: numValue;
   protected colorTextoIMC: strValue;
+  protected imcForm: FormGroup;
 
   constructor(
     private SharedServiceService: SharedServiceService,
     private snackBar: MatSnackBar,
+    private formBuilder: FormBuilder,
   ) {
     this.IMC = null;
     this.peso = null;
     this.altura = null;
     this.colorTextoIMC = null;
+    this.imcForm = this.formBuilder.group({
+      peso: [
+        null,
+        [Validators.required, Validators.min(0), Validators.max(400)],
+      ],
+      altura: [
+        null,
+        [Validators.required, Validators.min(0), Validators.max(250)],
+      ],
+    });
   }
 
   openSnackBar(message: string, action: string) {

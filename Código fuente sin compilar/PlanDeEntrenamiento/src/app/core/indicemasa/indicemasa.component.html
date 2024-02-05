@@ -24,52 +24,38 @@
   >
 </div>
 
-<form>
+<form [formGroup]="imcForm">
   <mat-form-field appearance="fill">
     <mat-label>Peso en Kg</mat-label>
-    <input
-      matInput
-      type="number"
-      [(ngModel)]="peso"
-      name="peso"
-      min="0"
-      max="400"
-    />
-    <mat-error *ngIf="peso && peso > 400">
-      Introduce un peso inferior
-    </mat-error>
+    <input matInput type="number" formControlName="peso" min="0" max="400" />
+    <mat-error *ngIf="imcForm.get('peso')?.hasError('required')"
+      >El peso es obligatorio</mat-error
+    >
+    <mat-error *ngIf="imcForm.get('peso')?.hasError('max')"
+      >Introduce un peso inferior a 400</mat-error
+    >
   </mat-form-field>
 
   <mat-form-field appearance="fill">
     <mat-label>Altura en cm</mat-label>
-    <input
-      matInput
-      type="number"
-      [(ngModel)]="altura"
-      name="altura"
-      min="0"
-      max="250"
-    />
-    <mat-error *ngIf="altura && altura > 250">
-      Introduce una altura inferior
-    </mat-error>
+    <input matInput type="number" formControlName="altura" min="0" max="250" />
+    <mat-error *ngIf="imcForm.get('altura')?.hasError('required')"
+      >La altura es obligatoria</mat-error
+    >
+    <mat-error *ngIf="imcForm.get('altura')?.hasError('max')"
+      >Introduce una altura inferior a 250</mat-error
+    >
   </mat-form-field>
 
   <btnComponent
-    [disabled]="
-      altura === null ||
-      peso === null ||
-      altura > 250 ||
-      peso === 0 ||
-      peso > 400
-    "
+    [disabled]="imcForm.invalid"
     [buttonText]="'Calcular IMC'"
-    (click)="calcularIMC(altura, peso)"
+    (click)="calcularIMC(imcForm.value.altura, imcForm.value.peso)"
   ></btnComponent>
 </form>
 
 <ng-container *ngIf="!!IMC">
-  <div id="resultado">IMC: {{ IMC }}</div>
+  <div id="resultado">IMC: {{ IMC }} <app-dialogo></app-dialogo></div>
 
   <mat-error *ngIf="IMC >= 30">
     Tu IMC es superior al recomendado, tienes obesidad
@@ -77,33 +63,8 @@
   <mat-error *ngIf="IMC >= 25 && IMC < 30">
     Tu IMC es superior al recomendado, tienes sobrepeso
   </mat-error>
-  <div *ngIf="IMC >= 18.5 && IMC < 25">Tu IMC es correcto</div>
+  <div class="sucess" *ngIf="IMC >= 18.5 && IMC < 25">Tu IMC es correcto</div>
   <mat-error *ngIf="IMC < 18.5">
     Tu IMC es inferior al recomendado, tienes bajo peso
   </mat-error>
 </ng-container>
-
-<app-dialogo></app-dialogo>
-
-<table>
-  <tr>
-    <th id="uno">IMC</th>
-    <th id="dos">Nivel de peso</th>
-  </tr>
-  <tr>
-    <td>Por debajo de 18.5</td>
-    <td>Bajo peso</td>
-  </tr>
-  <tr>
-    <td>18.5 - 24.9</td>
-    <td>Normal</td>
-  </tr>
-  <tr>
-    <td>25.0 - 29.9</td>
-    <td>Sobrepeso</td>
-  </tr>
-  <tr>
-    <td id="tres">30.0 o más</td>
-    <td id="cuatro">Obesidad</td>
-  </tr>
-</table>

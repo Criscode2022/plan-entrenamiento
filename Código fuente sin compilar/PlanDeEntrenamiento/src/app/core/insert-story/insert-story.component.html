@@ -1,50 +1,64 @@
-<form (ngSubmit)="onSubmit()">
-  <!-- Nombre -->
+<form [formGroup]="storyForm" (ngSubmit)="onSubmit()">
   <mat-form-field appearance="fill">
     <mat-label>Nombre</mat-label>
-    <input matInput [(ngModel)]="newPerson.nombre" name="nombre" required />
+    <input matInput formControlName="nombre" required maxlength="20" />
+    <mat-error *ngIf="storyForm.get('nombre')?.hasError('required')"
+      >El nombre es obligatorio</mat-error
+    >
+    <mat-error *ngIf="storyForm.get('nombre')?.hasError('minlength')"
+      >El nombre debe tener al menos 3 caracteres</mat-error
+    >
   </mat-form-field>
 
-  <!-- Apellido -->
   <mat-form-field appearance="fill">
     <mat-label>Apellidos</mat-label>
-    <input matInput [(ngModel)]="newPerson.apellido" name="apellido" required />
+    <input matInput formControlName="apellido" required maxlength="40" />
+    <mat-error *ngIf="storyForm.get('apellido')?.hasError('required')"
+      >Se requiere al menos un apellido</mat-error
+    >
   </mat-form-field>
 
-  <!-- Edad -->
   <mat-form-field appearance="fill">
     <mat-label>Edad</mat-label>
     <input
       matInput
       type="number"
-      [(ngModel)]="newPerson.edad"
-      name="edad"
+      formControlName="edad"
       min="14"
       max="120"
       required
     />
+    <mat-error *ngIf="storyForm.get('edad')?.hasError('required')"
+      >La edad es obligatoria</mat-error
+    ><mat-error *ngIf="storyForm.get('edad')?.hasError('min')"
+      >Debes tener mínimo 14 años</mat-error
+    >
   </mat-form-field>
 
-  <!-- Texto -->
   <mat-form-field appearance="fill">
     <mat-label>Mensaje</mat-label>
     <textarea
       matInput
-      [(ngModel)]="newPerson.texto"
-      name="texto"
+      formControlName="texto"
       required
+      maxlength="400"
     ></textarea>
+    <mat-error *ngIf="storyForm.get('texto')?.hasError('maxlength')"
+      >Máximo de caracteres alcanzado (400)</mat-error
+    >
+    <mat-error *ngIf="storyForm.get('texto')?.hasError('required')"
+      >El mensaje es obligatorio</mat-error
+    >
   </mat-form-field>
 
-  <!-- URL del Avatar -->
   <mat-form-field appearance="fill">
     <mat-label>URL del Avatar</mat-label>
-    <input matInput type="text" [(ngModel)]="newPerson.avatar" name="avatar" />
+    <input matInput type="text" formControlName="avatar" />
   </mat-form-field>
 
-  <!-- Botón de envío -->
-  <button mat-button color="accent" type="submit">Enviar</button>
+  <button mat-button color="accent" type="submit" [disabled]="!storyForm.valid">
+    Enviar
+  </button>
 </form>
 
-<!-- Mensaje de error -->
 <div *ngIf="error" class="error-message">Error: {{ error }}</div>

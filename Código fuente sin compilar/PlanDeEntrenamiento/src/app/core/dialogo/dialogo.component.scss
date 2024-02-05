@@ -1,14 +1,4 @@
-button {
-  margin-top: 20pt;
-  float: right;
-  text-align: center;
-  font-size: 14px;
-  width: 70%;
-  padding: 15pt;
-}
 
-@media (min-width: 700px) {
-  #dialogo {
-    display: none;
-  }
+button {
+  margin: 20px;
 }
