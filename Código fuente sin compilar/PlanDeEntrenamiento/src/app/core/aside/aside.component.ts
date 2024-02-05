@@ -19,7 +19,7 @@ export class AsideComponent {
 
   constructor(
     private SharedServiceService: SharedServiceService,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
   ) {
     this.SharedServiceService.IMC$.subscribe((data) => {
       this.IMC = data;
@@ -116,7 +116,7 @@ export class AsideComponent {
   public enviar() {
     this.openSnackBar(
       '¡Listo! Tus datos han sido enviados correctamente, pronto nos pondremos en contacto contigo',
-      'Cerrar'
+      'Cerrar',
     );
   }
 }

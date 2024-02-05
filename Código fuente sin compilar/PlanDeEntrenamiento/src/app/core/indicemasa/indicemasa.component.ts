@@ -16,7 +16,7 @@ export class IndicemasaComponent {
 
   constructor(
     private SharedServiceService: SharedServiceService,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
   ) {
     this.IMC = null;
     this.peso = null;

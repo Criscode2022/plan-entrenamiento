@@ -15,7 +15,7 @@ export class StoriesService {
   constructor() {
     this.supabase = createClient(
       environment.supabaseUrl,
-      environment.supabaseKey
+      environment.supabaseKey,
     );
     this.loadUsers();
   }
@@ -46,7 +46,7 @@ export class StoriesService {
             }
             observer.complete();
           },
-          (error) => observer.error(error)
+          (error) => observer.error(error),
         );
     });
   }
