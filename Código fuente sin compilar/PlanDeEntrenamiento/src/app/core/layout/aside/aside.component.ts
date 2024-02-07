@@ -25,6 +25,7 @@ export class AsideComponent {
       edad: [null, [Validators.required, Validators.min(16)]],
       IMC: [null, { disabled: true }, [Validators.required]],
       selectOption: [null, [Validators.required]],
+      email: [null, [Validators.required, Validators.email]],
     });
     this.SharedDataService.IMC$.subscribe((data) => {
       if (data) {
