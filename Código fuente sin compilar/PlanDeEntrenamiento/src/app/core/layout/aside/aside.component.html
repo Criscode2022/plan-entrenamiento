@@ -88,15 +88,23 @@
   <li>
     Tu nombre es <strong>{{ userForm.get('nombre')?.value }}</strong>
   </li>
+
   <li>
-    Tienes <strong>{{ userForm.get('edad')?.value }}</strong> años
+    Tienes <strong>{{ userForm.get('edad')?.value }} años</strong>
   </li>
+
   <li>
     Tu IMC es <strong>{{ IMC }}</strong>
   </li>
+
+  <li>
+    Tu email es <strong>{{ userForm.get('email')?.value }}</strong>
+  </li>
+
   <li>
     Tu objetivo es <strong>{{ userForm.get('selectOption')?.value }}</strong>
   </li>
+
   <li>
     Tu entrenador/a va a ser
     <strong>{{ entrenador }}</strong>

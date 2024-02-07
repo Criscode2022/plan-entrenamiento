@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { numValue } from 'src/main';
+import { numValue, strValue } from 'src/main';
 import * as XLSX from 'xlsx';
 import { SharedDataService } from '../../Services/shared-data/shared-service.service';
 
@@ -12,7 +12,7 @@ import { SharedDataService } from '../../Services/shared-data/shared-service.ser
 })
 export class AsideComponent {
   protected IMC: numValue = null;
-  protected entrenador = '';
+  protected entrenador: strValue = null;
   protected userForm: FormGroup;
 
   constructor(
@@ -46,10 +46,12 @@ export class AsideComponent {
 
   protected descargar() {
     const data = {
-      edad: this.userForm.get('edad')?.value,
-      objetivo: this.userForm.get('selectOption')?.value,
-      entrenador: this.entrenador,
-      imc: this.IMC,
+      Nombre: this.userForm.get('nombre')?.value,
+      Edad: this.userForm.get('edad')?.value,
+      Objetivo: this.userForm.get('selectOption')?.value,
+      Entrenador: this.entrenador,
+      IMC: this.IMC,
+      Email: this.userForm.get('email')?.value,
     };
 
     const json = JSON.stringify(data);
