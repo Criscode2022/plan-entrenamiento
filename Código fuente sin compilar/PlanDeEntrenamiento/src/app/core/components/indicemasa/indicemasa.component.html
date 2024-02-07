@@ -25,7 +25,7 @@
 </div>
 
 <form [formGroup]="imcForm">
-  <mat-form-field appearance="fill">
+  <mat-form-field>
     <mat-label>Peso en Kg</mat-label>
     <input matInput type="number" formControlName="peso" min="0" max="400" />
     <mat-error *ngIf="imcForm.get('peso')?.hasError('required')"
@@ -36,7 +36,7 @@
     >
   </mat-form-field>
 
-  <mat-form-field appearance="fill">
+  <mat-form-field>
     <mat-label>Altura en cm</mat-label>
     <input matInput type="number" formControlName="altura" min="0" max="250" />
     <mat-error *ngIf="imcForm.get('altura')?.hasError('required')"

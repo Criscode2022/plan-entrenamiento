@@ -30,7 +30,7 @@ export class InsertStoryComponent implements OnDestroy {
       apellido: ['', Validators.required],
       edad: [
         null,
-        [Validators.required, Validators.min(14), Validators.max(110)],
+        [Validators.required, Validators.min(16), Validators.max(110)],
       ],
       texto: ['', [Validators.required]],
       avatar: '',

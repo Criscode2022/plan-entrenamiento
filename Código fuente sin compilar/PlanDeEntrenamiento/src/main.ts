@@ -8,3 +8,9 @@ platformBrowserDynamic()
 
 export type numValue = number | null;
 export type strValue = string | null;
+
+export enum FitnessData {
+  'perder grasa' = 'Carla Alonso',
+  'conseguir masa muscular' = 'Pilar Vázquez',
+  'mejorar tu salud cardiovascular' = 'Manuel Rodríguez',
+}

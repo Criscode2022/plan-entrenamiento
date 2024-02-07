@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { numValue } from 'src/main';
 import * as XLSX from 'xlsx';
 import { SharedDataService } from '../../Services/shared-data/shared-service.service';
 
@@ -9,21 +11,27 @@ import { SharedDataService } from '../../Services/shared-data/shared-service.ser
   styleUrls: ['./aside.component.scss'],
 })
 export class AsideComponent {
-  protected datos: string[] = [];
-  protected IMC!: number;
-  protected nombre = '';
-  protected edad = '';
-  protected selectOption = '';
+  protected IMC: numValue = null;
   protected entrenador = '';
-  protected desactivado = true;
+  protected userForm: FormGroup;
 
   constructor(
     private SharedDataService: SharedDataService,
     private snackBar: MatSnackBar,
+    private formBuilder: FormBuilder,
   ) {
+    this.userForm = this.formBuilder.group({
+      nombre: [null, [Validators.required]],
+      edad: [null, [Validators.required, Validators.min(16)]],
+      IMC: [null, { disabled: true }, [Validators.required]],
+      selectOption: [null, [Validators.required]],
+    });
     this.SharedDataService.IMC$.subscribe((data) => {
-      this.IMC = data;
-      this.check();
+      if (data) {
+        this.userForm.get('IMC')?.setValue({ disabled: true });
+        this.userForm.get('IMC')?.setValue(data);
+        this.IMC = data;
+      }
     });
   }
 
@@ -31,50 +39,14 @@ export class AsideComponent {
     this.snackBar.open(message, action, { duration: 5000 });
   }
 
-  public imprimir() {
-    this.datos = [];
-    this.datos.push(this.nombre);
-    this.datos.push(this.edad.toString());
-    this.datos.push(this.selectOption);
-    this.datos.push(this.entrenador);
+  protected borrar() {
+    this.userForm.reset();
   }
 
-  public borrar() {
-    this.datos = [];
-    this.nombre = '';
-    this.selectOption = '';
-    this.edad = '';
-    this.IMC = 0;
-  }
-
-  public check() {
-    this.desactivado = !(
-      this.nombre.trim() !== '' &&
-      this.edad &&
-      this.selectOption !== '' &&
-      this.IMC > 0
-    );
-  }
-
-  public asignarentrenador(entrenador: string) {
-    switch (this.selectOption) {
-      case 'perder grasa':
-        this.entrenador = 'Carla Alonso';
-        break;
-      case 'conseguir masa muscular':
-        this.entrenador = 'Pilar Vázquez';
-        break;
-      case 'mejorar tu salud cardiovascular':
-        this.entrenador = 'Manuel Rodríguez';
-        break;
-    }
-  }
-
-  public descargar() {
+  protected descargar() {
     const data = {
-      nombre: this.nombre,
-      edad: this.edad,
-      objetivo: this.selectOption,
+      edad: this.userForm.get('edad')?.value,
+      objetivo: this.userForm.get('selectOption')?.value,
       entrenador: this.entrenador,
       imc: this.IMC,
     };
@@ -83,25 +55,21 @@ export class AsideComponent {
     console.log('Data:', data);
     console.log('JSON:', json);
 
-    // Create a workbook
+    // XLSX library to export data to excel
+
     const wb: XLSX.WorkBook = XLSX.utils.book_new();
 
-    // Create the worksheet
     const ws: XLSX.WorkSheet = XLSX.utils.json_to_sheet([data]);
 
-    //Add the worksheet to the workbook
     XLSX.utils.book_append_sheet(wb, ws, 'Datos');
 
-    // write the worbook as xlsx
     const wbout: ArrayBuffer = XLSX.write(wb, {
       bookType: 'xlsx',
       type: 'array',
     });
 
-    // Create a blob object with the content
     const blob = new Blob([wbout], { type: 'application/octet-stream' });
 
-    // Descargar el archivo
     const url = URL.createObjectURL(blob);
 
     const a = document.createElement('a');
@@ -109,11 +77,10 @@ export class AsideComponent {
     a.href = url;
     a.click();
 
-    // Clean up the temporary URL
     URL.revokeObjectURL(url);
   }
 
-  public enviar() {
+  protected enviar() {
     this.openSnackBar(
       '¡Listo! Tus datos han sido enviados correctamente, pronto nos pondremos en contacto contigo',
       'Cerrar',

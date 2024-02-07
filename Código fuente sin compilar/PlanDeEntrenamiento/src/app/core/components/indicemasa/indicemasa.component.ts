@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { ButtonComponent } from 'src/app/shared/components/button/btn.component';
 import { numValue, strValue } from 'src/main';
 import { SharedDataService } from '../../Services/shared-data/shared-service.service';
 
@@ -12,11 +11,8 @@ import { SharedDataService } from '../../Services/shared-data/shared-service.ser
 })
 export class IndicemasaComponent {
   protected IMC: numValue;
-  protected peso: numValue;
-  protected altura: numValue;
   protected colorTextoIMC: strValue;
   protected imcForm: FormGroup;
-  ButtonComponent!: ButtonComponent;
 
   constructor(
     private SharedDataService: SharedDataService,
@@ -24,8 +20,6 @@ export class IndicemasaComponent {
     private formBuilder: FormBuilder,
   ) {
     this.IMC = null;
-    this.peso = null;
-    this.altura = null;
     this.colorTextoIMC = null;
     this.imcForm = this.formBuilder.group({
       peso: [
@@ -50,6 +44,7 @@ export class IndicemasaComponent {
       this.cambiarColor();
       this.SharedDataService.setData(this.IMC);
       this.SharedDataService.getData();
+      console.log(this.SharedDataService.getData());
 
       return this.IMC;
     }

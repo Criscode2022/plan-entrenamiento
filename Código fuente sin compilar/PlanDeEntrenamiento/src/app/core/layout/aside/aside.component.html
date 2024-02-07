@@ -1,44 +1,41 @@
 <mat-icon>maximize</mat-icon>
 
 <h2>Solicita tu plan personalizado</h2>
-
-<form action="">
-  <mat-form-field appearance="fill">
+<form [formGroup]="userForm">
+  <mat-form-field>
     <mat-label>Nombre</mat-label>
-    <input matInput [(ngModel)]="nombre" name="nombre" (input)="check()" />
+    <input matInput formControlName="nombre" />
   </mat-form-field>
-  <mat-form-field appearance="fill">
+
+  <mat-form-field>
     <mat-label>Edad</mat-label>
-    <input
-      matInput
-      type="number"
-      [(ngModel)]="edad"
-      name="edad"
-      min="0"
-      (input)="check()"
-    /> </mat-form-field
-  ><mat-form-field
-    appearance="fill"
+    <input matInput type="number" formControlName="edad" min="16" />
+  </mat-form-field>
+
+  <mat-form-field
     matTooltip="Puedes calcular tu IMC en la sección 'Calcular IMC'"
   >
     <mat-label>IMC</mat-label>
-    <input matInput type="number" [(ngModel)]="IMC" name="IMC" readonly />
+    <input matInput type="number" formControlName="IMC" readonly />
   </mat-form-field>
-  <mat-form-field appearance="fill">
+
+  <mat-form-field>
     <mat-label>Objetivo</mat-label>
-    <mat-select
-      [(ngModel)]="selectOption"
-      name="selectOption"
-      (selectionChange)="asignarentrenador(selectOption); check()"
-    >
+    <mat-select formControlName="selectOption">
       <mat-option value="seleccionar" disabled
         >Selecciona tu objetivo</mat-option
       >
-      <mat-option value="perder grasa">Perder grasa</mat-option>
-      <mat-option value="mejorar tu salud cardiovascular"
+      <mat-option value="perder grasa" (click)="entrenador = 'Carla Alonso'"
+        >Perder grasa</mat-option
+      >
+      <mat-option
+        value="mejorar tu salud cardiovascular"
+        (click)="entrenador = 'Manuel Rodríguez'"
         >Mejorar tu salud cardiovascular</mat-option
       >
-      <mat-option value="conseguir masa muscular"
+      <mat-option
+        value="conseguir masa muscular"
+        (click)="entrenador = 'Pilar Vázquez'"
         >Conseguir masa muscular</mat-option
       >
     </mat-select>
@@ -46,32 +43,35 @@
 
   <btnComponent [buttonText]="'Borrar datos'" (click)="borrar()"></btnComponent>
 
-  <btnComponent [buttonText]="'Imprimir'" (click)="imprimir()"></btnComponent>
-
-  <btnComponent [buttonText]="'Enviar datos'" (click)="enviar()"></btnComponent>
+  <btnComponent
+    [buttonText]="'Enviar datos'"
+    [disabled]="userForm.invalid"
+  ></btnComponent>
 
   <btnComponent
     [buttonText]="'Descargar datos'"
+    [disabled]="userForm.invalid"
     (click)="descargar()"
   ></btnComponent>
 </form>
 
-<ul *ngIf="datos.length > 0">
+<ul *ngIf="userForm.valid">
   <p>Estos son tus datos:</p>
 
   <li>
-    Tu nombre es <strong>{{ datos[0] }}</strong>
+    Tu nombre es <strong>{{ userForm.get('nombre')?.value }}</strong>
   </li>
   <li>
-    Tienes <strong>{{ datos[1] }}</strong> años
+    Tienes <strong>{{ userForm.get('edad')?.value }}</strong> años
   </li>
   <li>
     Tu IMC es <strong>{{ IMC }}</strong>
   </li>
   <li>
-    Tu objetivo es <strong>{{ selectOption }}</strong>
+    Tu objetivo es <strong>{{ userForm.get('selectOption')?.value }}</strong>
   </li>
   <li>
-    Tu entrenador/a va a ser <strong>{{ entrenador }}</strong>
+    Tu entrenador/a va a ser
+    <strong>{{ entrenador }}</strong>
   </li>
 </ul>
