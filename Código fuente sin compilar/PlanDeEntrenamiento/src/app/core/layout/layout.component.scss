@@ -6,6 +6,13 @@
   grid-template-columns: 15% 65% 20%;
   background: $background;
 }
+
+:host(.dark-mode) {
+  // Dark mode styles
+background-color: black;
+  // Any other dark mode adjustments
+}
+
 @media (max-width: 700px) {
   :host {
     display: flex;
@@ -14,6 +21,7 @@
     min-height: 100%;
     height: auto;
   }
+
 
   :host > :nth-child(2) {
     flex: 2 0 auto;
