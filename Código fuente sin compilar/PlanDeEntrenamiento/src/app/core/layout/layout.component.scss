@@ -1,25 +1,15 @@
+@import '../../../styles.scss';
+
+
 :host {
   display: grid;
   grid-template-columns: 15% 65% 20%;
-  background: linear-gradient(
-    to bottom right,
-    #ffe4c4,
-    #ffdab9,
-    #ffc4a7,
-    #ffbb9e
-  );
+  background: $background;
 }
 @media (max-width: 700px) {
   :host {
     display: flex;
     flex-direction: column;
-    background: linear-gradient(
-      to bottom right,
-      #ffe4c4,
-      #ffdab9,
-      #ffc4a7,
-      #ffbb9e
-    );
     overflow-y: scroll;
     min-height: 100%;
     height: auto;

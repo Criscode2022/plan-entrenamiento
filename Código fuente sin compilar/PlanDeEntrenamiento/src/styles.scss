@@ -1,5 +1,13 @@
 @import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
 
+$background: linear-gradient(
+  to bottom right,
+  #ffe4c4,
+  #ffdab9,
+  #ffc4a7,
+  #ffbb9e
+);
+
 body {
   margin: 0;
   padding: 0;
