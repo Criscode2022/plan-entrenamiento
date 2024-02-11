@@ -1,4 +1,8 @@
 @import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
 
 $background: linear-gradient(
   to bottom right,
@@ -41,7 +45,12 @@ mat-error {
   font-weight: bold;
 }
 
-.dark-mode {
-  background-color: black;
+.dark-mode app-main, .dark-mode app-navbar {
+  background-color: #121212;
   color: white;
 }
+
+.dark-mode app-aside {
+  background-color: rgb(56, 0, 0);
+  color: white;
+  }
