@@ -2,7 +2,6 @@ img {
   width: 200px;
   height: 200px;
   transition: transform 0.3s ease-in-out;
-
   display: flex;
   border-radius: 5px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
@@ -21,13 +20,6 @@ li:first-child {
 
 ul {
   width: 50%;
-}
-
-#datos {
-  background-color: blue;
-  position: absolute;
-  bottom: auto;
-  right: auto;
 }
 
 h2 {
