@@ -14,11 +14,8 @@
   <mat-form-field>
     <mat-label>Edad</mat-label>
     <input matInput type="number" formControlName="edad" min="16" />
-    <mat-error *ngIf="userForm.get('edad')?.hasError('required')"
-      >Introduce tu edad</mat-error
-    >
-    <mat-error *ngIf="userForm.get('edad')?.hasError('min')"
-      >Debes tener mínimo 16 años</mat-error
+    <mat-error *ngIf="userForm.get('edad')?.errors"
+      >Introduce una edad válida</mat-error
     >
   </mat-form-field>
 
