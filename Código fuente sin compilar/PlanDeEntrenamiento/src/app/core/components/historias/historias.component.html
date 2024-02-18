@@ -1,15 +1,17 @@
-<h2>Comparte tu experiencia con nosotros</h2>
+<h2 class="pb-5">Comparte tu experiencia con nosotros</h2>
 
 <app-insert-story></app-insert-story>
 
 <div *ngIf="userData">
   <div *ngFor="let user of userData">
     <h3>{{ user.nombre }} {{ user.apellido }}</h3>
-    <ul>
-      <li id="primero"><img [src]="user.avatar" alt="{{ user.nombre }}" /></li>
-      <li><u>Edad:</u> {{ user.edad }}</li>
+    <ul class="w-1/2">
+      <li class="list-none">
+        <img [src]="user.avatar" alt="{{ user.nombre }}" />
+      </li>
+      <li><strong class="underline">Edad:</strong> {{ user.edad }}</li>
       <li>
-        <u>Testimonio:</u><em> {{ user.texto }}</em>
+        <strong class="underline">Testimonio:</strong><em> {{ user.texto }}</em>
       </li>
     </ul>
   </div>
