@@ -6,9 +6,6 @@ platformBrowserDynamic()
   .bootstrapModule(AppModule)
   .catch((err) => console.error(err));
 
-export type numValue = number | null;
-export type strValue = string | null;
-
 export enum FitnessData {
   'perder grasa' = 'Carla Alonso',
   'conseguir masa muscular' = 'Pilar Vázquez',

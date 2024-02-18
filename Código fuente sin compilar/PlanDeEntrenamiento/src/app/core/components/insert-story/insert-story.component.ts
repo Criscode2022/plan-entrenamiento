@@ -1,7 +1,6 @@
 import { Component, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
-import { strValue } from 'src/main';
 import { StoriesService } from '../../Services/stories/stories.service';
 
 @Component({
@@ -11,7 +10,7 @@ import { StoriesService } from '../../Services/stories/stories.service';
 })
 export class InsertStoryComponent implements OnDestroy {
   storyForm: FormGroup;
-  error: strValue = null;
+  error: string | null = null;
   private subscription: Subscription = new Subscription();
 
   constructor(
@@ -58,11 +57,11 @@ export class InsertStoryComponent implements OnDestroy {
 
   private resetForm() {
     this.storyForm.reset({
-      nombre: '',
-      apellido: '',
+      nombre: null,
+      apellido: null,
       edad: null,
-      texto: '',
-      avatar: '',
+      texto: null,
+      avatar: null,
     });
     this.error = null;
   }

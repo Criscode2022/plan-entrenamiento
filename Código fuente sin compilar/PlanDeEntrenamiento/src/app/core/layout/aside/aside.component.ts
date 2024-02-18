@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { numValue, strValue } from 'src/main';
 import * as XLSX from 'xlsx';
 import { SharedDataService } from '../../Services/shared-data/shared-service.service';
 
@@ -11,8 +10,8 @@ import { SharedDataService } from '../../Services/shared-data/shared-service.ser
   styleUrls: ['./aside.component.scss'],
 })
 export class AsideComponent {
-  protected IMC: numValue = null;
-  protected entrenador: strValue = null;
+  protected IMC: number | null = null;
+  protected entrenador: string | null = null;
   protected userForm: FormGroup;
 
   constructor(
