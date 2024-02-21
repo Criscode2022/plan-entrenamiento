@@ -22,13 +22,12 @@ export class AsideComponent {
     this.userForm = this.formBuilder.group({
       nombre: [null, [Validators.required]],
       edad: [null, [Validators.required, Validators.min(16)]],
-      IMC: [null, { disabled: true }, [Validators.required]],
+      IMC: [null, [Validators.required]],
       selectOption: [null, [Validators.required]],
       email: [null, [Validators.required, Validators.email]],
     });
     this.SharedDataService.IMC$.subscribe((data) => {
       if (data) {
-        this.userForm.get('IMC')?.setValue({ disabled: true });
         this.userForm.get('IMC')?.setValue(data);
         this.IMC = data;
       }

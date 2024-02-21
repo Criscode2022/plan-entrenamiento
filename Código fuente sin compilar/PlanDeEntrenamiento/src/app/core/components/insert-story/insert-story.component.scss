@@ -4,6 +4,10 @@ button {
   padding: 20pt 0;
 }
 
+mat-form-field {
+  width: 100%;
+}
+
 @media (max-width: 700px) {
   form {
     width: 90%;

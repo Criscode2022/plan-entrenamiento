@@ -2,7 +2,7 @@
 
 <h2>Solicita tu plan personalizado</h2>
 
-<form [formGroup]="userForm" novalidate>
+<form [formGroup]="userForm" class="flex flex-col gap-2" novalidate>
   <mat-form-field>
     <mat-label>Nombre</mat-label>
     <input matInput formControlName="nombre" maxlength="20" />
@@ -25,7 +25,7 @@
     <mat-label>IMC</mat-label>
     <input matInput type="number" formControlName="IMC" readonly />
     <mat-error *ngIf="userForm.get('IMC')?.hasError('required')"
-      >Calcula tu IMC</mat-error
+      >Calcula tu IMC en la sección "Calcular IMC"</mat-error
     >
   </mat-form-field>
 
