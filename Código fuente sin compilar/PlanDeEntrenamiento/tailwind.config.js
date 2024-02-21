@@ -8,11 +8,12 @@ module.exports = {
           light: '#000000', // Black for light mode text
           dark: '#ffffff', // White for dark mode text
         },
-        section1: {
-          dark: '#121212', // Adjusted dark color for section1
+        main: {
+          dark: '#121212', // Adjusted dark color for main
         },
-        section2: {
-          dark: '#483d8b', // Dark Slate Blue for dark mode of section2
+        primary: {
+          light: '#ffa600',
+          dark: '#483d8b', // Dark Slate Blue for dark mode of aside
         },
       },
     },
