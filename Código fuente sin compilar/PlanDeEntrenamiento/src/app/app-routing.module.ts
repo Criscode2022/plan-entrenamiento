@@ -7,7 +7,7 @@ import { IndicemasaComponent } from './core/components/indicemasa/indicemasa.com
 
 const routes: Routes = [
   {
-    path: '', // Ruta por defecto.
+    path: '',
     component: BienvenidaComponent,
   },
   { path: 'entrenadores', component: EntrenadoresComponent },
