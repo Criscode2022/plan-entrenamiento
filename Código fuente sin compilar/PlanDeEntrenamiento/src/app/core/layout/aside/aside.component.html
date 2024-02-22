@@ -66,23 +66,21 @@
   </mat-form-field>
 
   <button
-    class="btn btn-block border-none bg-secondary-light dark:bg-secondary-dark text-text-light dark:text-text-dark"
+    class="btn btn-block border-none bg-secondary-light dark:bg-secondary-dark text-text-light dark:text-text-dark hover:text-text-dark"
     (click)="borrar()"
   >
     Borrar datos
   </button>
 
   <button
-    class="btn btn-block border-none bg-secondary-light dark:bg-secondary-dark text-text-light dark:text-text-dark"
+    class="btn btn-block border-none bg-secondary-light dark:bg-secondary-dark text-text-light dark:text-text-dark hover:text-text-dark"
     (click)="descargar()"
-    [disabled]="userForm.invalid"
   >
     Descargar datos
   </button>
 
   <button
-    class="btn btn-block border-none bg-secondary-light dark:bg-secondary-dark text-text-light dark:text-text-dark"
-    [disabled]="userForm.invalid"
+    class="btn btn-block border-none bg-secondary-light dark:bg-secondary-dark text-text-light dark:text-text-dark hover:text-text-dark"
   >
     Enviar datos
   </button>
