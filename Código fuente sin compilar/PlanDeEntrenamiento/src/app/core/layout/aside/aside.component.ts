@@ -43,42 +43,44 @@ export class AsideComponent {
   }
 
   protected descargar() {
-    const data = {
-      Nombre: this.userForm.get('nombre')?.value,
-      Edad: this.userForm.get('edad')?.value,
-      Objetivo: this.userForm.get('selectOption')?.value,
-      Entrenador: this.entrenador,
-      IMC: this.IMC,
-      Email: this.userForm.get('email')?.value,
-    };
+    if (this.userForm.valid) {
+      const data = {
+        Nombre: this.userForm.get('nombre')?.value,
+        Edad: this.userForm.get('edad')?.value,
+        Objetivo: this.userForm.get('selectOption')?.value,
+        Entrenador: this.entrenador,
+        IMC: this.IMC,
+        Email: this.userForm.get('email')?.value,
+      };
 
-    const json = JSON.stringify(data);
-    console.log('Data:', data);
-    console.log('JSON:', json);
+      const json = JSON.stringify(data);
+      console.log('Data:', data);
+      console.log('JSON:', json);
 
-    // XLSX library to export data to excel
+      // XLSX library to export data to excel
 
-    const wb: XLSX.WorkBook = XLSX.utils.book_new();
+      const wb: XLSX.WorkBook = XLSX.utils.book_new();
 
-    const ws: XLSX.WorkSheet = XLSX.utils.json_to_sheet([data]);
+      const ws: XLSX.WorkSheet = XLSX.utils.json_to_sheet([data]);
 
-    XLSX.utils.book_append_sheet(wb, ws, 'Datos');
+      XLSX.utils.book_append_sheet(wb, ws, 'Datos');
 
-    const wbout: ArrayBuffer = XLSX.write(wb, {
-      bookType: 'xlsx',
-      type: 'array',
-    });
+      const wbout: ArrayBuffer = XLSX.write(wb, {
+        bookType: 'xlsx',
+        type: 'array',
+      });
 
-    const blob = new Blob([wbout], { type: 'application/octet-stream' });
+      const blob = new Blob([wbout], { type: 'application/octet-stream' });
 
-    const url = URL.createObjectURL(blob);
+      const url = URL.createObjectURL(blob);
 
-    const a = document.createElement('a');
-    a.download = 'datos-plan.xlsx';
-    a.href = url;
-    a.click();
+      const a = document.createElement('a');
+      a.download = 'datos-plan.xlsx';
+      a.href = url;
+      a.click();
 
-    URL.revokeObjectURL(url);
+      URL.revokeObjectURL(url);
+    }
   }
 
   protected enviar() {
