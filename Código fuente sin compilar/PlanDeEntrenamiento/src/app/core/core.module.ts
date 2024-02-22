@@ -12,7 +12,6 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { RouterModule } from '@angular/router';
-import { ButtonComponent } from '../shared/components/button/btn.component';
 import { BienvenidaComponent } from './components/bienvenida/bienvenida.component';
 import {
   DialogContentExampleDialog,
@@ -57,7 +56,6 @@ import { NavbarComponent } from './layout/navbar/navbar.component';
     MatCardModule,
     MatButtonModule,
     MatSnackBarModule,
-    ButtonComponent,
   ],
 })
 export class CoreModule {}
