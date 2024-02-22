@@ -13,7 +13,11 @@ module.exports = {
         },
         primary: {
           light: '#ffa600',
-          dark: '#483d8b', // Dark Slate Blue for dark mode of aside
+          dark: '#483d8b',
+        },
+        secondary: {
+          light: '#007bffcd',
+          dark: '#ff7d00', // Adjusted secondary color for dark mode
         },
       },
     },

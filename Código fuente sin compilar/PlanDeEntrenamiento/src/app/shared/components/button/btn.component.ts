@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, Input, SimpleChanges } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 
@@ -11,7 +11,21 @@ import { MatButtonModule } from '@angular/material/button';
   imports: [MatButtonModule, CommonModule, ReactiveFormsModule],
 })
 export class ButtonComponent {
-  @Input() buttonText: string = '';
-  @Input() buttonColor: 'primary' | 'accent' | 'warn' = 'primary';
-  @Input() disabled: boolean = false;
+  @Input() color: string = 'gray'; // Default color
+  buttonClass: string = '';
+
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log('ngOnChanges called', changes);
+    if (changes['color']) {
+      this.updateButtonClass();
+    }
+  }
+
+  private updateButtonClass(): void {
+    // Tailwind class as a fallback
+    const baseClass = 'btn btn-block border-none';
+    // Update buttonClass with the new class string
+    this.buttonClass = `${baseClass} bg-${this.color}`;
+    console.log(`Button class updated: ${this.buttonClass}`);
+  }
 }

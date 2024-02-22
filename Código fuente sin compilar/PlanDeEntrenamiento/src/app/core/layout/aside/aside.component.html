@@ -65,18 +65,27 @@
     >
   </mat-form-field>
 
-  <btnComponent [buttonText]="'Borrar datos'" (click)="borrar()"></btnComponent>
+  <button
+    class="btn btn-block border-none bg-secondary-light dark:bg-secondary-dark text-text-light dark:text-text-dark"
+    (click)="borrar()"
+  >
+    Borrar datos
+  </button>
 
-  <btnComponent
-    [buttonText]="'Enviar datos'"
-    [disabled]="userForm.invalid"
-  ></btnComponent>
-
-  <btnComponent
-    [buttonText]="'Descargar datos'"
-    [disabled]="userForm.invalid"
+  <button
+    class="btn btn-block border-none bg-secondary-light dark:bg-secondary-dark text-text-light dark:text-text-dark"
     (click)="descargar()"
-  ></btnComponent>
+    [disabled]="userForm.invalid"
+  >
+    Descargar datos
+  </button>
+
+  <button
+    class="btn btn-block border-none bg-secondary-light dark:bg-secondary-dark text-text-light dark:text-text-dark"
+    [disabled]="userForm.invalid"
+  >
+    Enviar datos
+  </button>
 </form>
 
 <ul *ngIf="userForm.valid">
