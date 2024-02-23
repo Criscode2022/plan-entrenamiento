@@ -40,6 +40,13 @@
       >Introduce una altura válida</mat-error
     >
   </mat-form-field>
+
+  <button
+    class="btn btn-block border-none bg-secondary-light dark:bg-secondary-dark text-text-light dark:text-text-dark hover:text-text-dark"
+    (click)="calcularIMC(imcForm.value.peso, imcForm.value.altura)"
+  >
+    Calcular IMC
+  </button>
 </form>
 
 <ng-container *ngIf="!!IMC">
