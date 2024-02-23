@@ -1,26 +1,10 @@
 .containerCard {
-  height: auto;
-  margin-bottom: 20pt;
   width: 30%;
   margin: auto;
 }
 
 p {
   padding: 20px;
-}
-
-a {
-  text-decoration: none;
-  text-align: center;
-  margin: auto;
-}
-
-#Cards {
-  display: flex;
-  flex-direction: row;
-  gap: 30pt;
-  padding: 0 10px;
-  align-items: center;
 }
 
 $background-size-cover: cover;
@@ -44,17 +28,9 @@ $background-size-cover: cover;
   background-image: url('/assets/avatarpilar.svg');
 }
 
-button {
-  margin: auto;
-}
-
 @media (max-width: 1300px) {
   .containerCard {
-    width: 100%;
+    width: 80%;
     margin-bottom: 20pt;
-  }
-
-  #Cards {
-    flex-direction: column;
   }
 }
