@@ -1,18 +1,9 @@
-table, th, td {
+table,
+th,
+td {
+  text-align: center;
 
-    text-align: center;
+  border: solid black 1px;
 
-border: solid black 1px;
-
-}
-
-h2 {
-
-    text-align: center;
-}
-
-th, td {
-
-    padding: 10pt;
-
+  padding: 10pt;
 }

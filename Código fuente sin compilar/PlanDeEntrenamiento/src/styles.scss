@@ -1,8 +1,7 @@
-@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
-
 
 $background: linear-gradient(
   to bottom right,
@@ -27,7 +26,7 @@ body {
 }
 body {
   margin: 0;
-  font-family: Roboto, "Helvetica", sans-serif;
+  font-family: Roboto, 'Helvetica', sans-serif;
 }
 
 h2 {

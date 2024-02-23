@@ -1,28 +1,23 @@
 :host {
-
   display: flex;
   align-items: center;
-
 }
 
 #botonesMobile {
-
   display: flex;
   flex-direction: column;
   gap: 10pt;
 }
 
 #botonesMobile div {
-margin-top: 10pt;
+  margin-top: 10pt;
   display: flex;
   flex-direction: column;
   gap: 10pt;
   justify-content: space-around;
 }
 
-
 @media (min-width: 831px) {
-
   #botonesMobile {
     display: none;
   }
@@ -38,11 +33,10 @@ margin-top: 10pt;
     gap: 20pt;
     margin-left: 10pt;
     align-items: center;
-
   }
 
   #botonesDesktop a {
-  text-decoration: none;
+    text-decoration: none;
     font-weight: bolder;
     width: 165px;
     text-align: center;
@@ -50,33 +44,22 @@ margin-top: 10pt;
 }
 
 @media (max-width: 1200px) {
-
   #botonesDesktop {
     position: fixed;
     top: 200px;
     left: 5px;
   }
-
 }
 
-  @media (max-width: 830px) {
-
-
-    #botonesMobile {
-      position: fixed;
-      top: 30px;
-      left: 15px;
-      z-index: 10;
-
-
-}
-
-    #botonesDesktop {
-
-      display: none !important;
-    }
-
-
-
+@media (max-width: 830px) {
+  #botonesMobile {
+    position: fixed;
+    top: 30px;
+    left: 15px;
+    z-index: 10;
   }
 
+  #botonesDesktop {
+    display: none !important;
+  }
+}

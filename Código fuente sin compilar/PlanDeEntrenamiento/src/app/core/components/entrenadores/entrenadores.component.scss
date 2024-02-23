@@ -35,17 +35,17 @@ $background-size-cover: cover;
 
 .example-header-image {
   @extend %background-cover;
-  background-image: url("/assets/avatarcarla.svg");
+  background-image: url('/assets/avatarcarla.svg');
 }
 
 .example-header-image2 {
   @extend %background-cover;
-  background-image: url("/assets/avatarmanuel.svg");
+  background-image: url('/assets/avatarmanuel.svg');
 }
 
 .example-header-image3 {
   @extend %background-cover;
-  background-image: url("/assets/avatarpilar.svg");
+  background-image: url('/assets/avatarpilar.svg');
 }
 
 button {
