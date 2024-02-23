@@ -15,6 +15,9 @@ export class SharedDataService {
   setData(data: number) {
     this.IMCSubject.next(data);
   }
+
+  //Getter for cases that don't need reactivity
+
   getData(): number {
     return this.IMCSubject.getValue() || 0;
   }

@@ -1,5 +1,6 @@
 <div id="botonesDesktop">
   <button
+    class="bg-brown-400"
     routerLink="/"
     mat-fab
     color="warn"
@@ -7,23 +8,45 @@
   >
     <mat-icon>home</mat-icon>
   </button>
-  <a routerLink="/indicemasa" mat-raised-button>Calcular IMC</a>
-  <a routerLink="/entrenadores" mat-raised-button>Entrenadores</a>
-  <a routerLink="/historias" mat-raised-button>Experiencias</a>
+
+  <button
+    routerLink="/indicemasa"
+    class="btn btn-block bg-primary-light dark:bg-primary-dark rounded shadow-xl border-none text-text-light dark:text-text-dark hover:text-text-dark"
+  >
+    Calcular IMC
+  </button>
+
+  <button
+    routerLink="/entrenadores"
+    class="btn btn-block bg-primary-light dark:bg-primary-dark rounded shadow-xl border-none text-text-light dark:text-text-dark hover:text-text-dark"
+  >
+    Entrenadores
+  </button>
+
+  <button
+    routerLink="/historias"
+    class="btn btn-block bg-primary-light dark:bg-primary-dark rounded shadow-xl border-none text-text-light dark:text-text-dark hover:text-text-dark"
+  >
+    Experiencias
+  </button>
 </div>
 
 <div id="botonesMobile">
   <button
     routerLink="/"
     mat-fab
-    color="primary"
-    aria-label="Example icon button with a home icon"
+    aria-label="Home icon button with a home icon"
+    class="bg-primary dark:bg-primary-dark"
   >
     <mat-icon>home</mat-icon>
   </button>
-  <button mat-fab (click)="toggleGroup()">
+  <button
+    mat-fab
+    (click)="toggleGroup()"
+    class="bg-primary dark:bg-primary-dark"
+  >
     <mat-icon style="color: white">{{
-      isHidden ? "arrow_drop_up" : "arrow_drop_down"
+      isHidden ? 'arrow_drop_up' : 'arrow_drop_down'
     }}</mat-icon>
   </button>
   <div *ngIf="isHidden" id="smalllinks">

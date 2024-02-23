@@ -1,15 +1,15 @@
 module.exports = {
   content: ['./src/**/*.{html,ts}'],
-  darkMode: 'class', // Use 'class' to control dark mode with a class on the HTML element
+  darkMode: 'class',
   theme: {
     extend: {
       colors: {
         text: {
-          light: '#000000', // Black for light mode text
-          dark: '#ffffff', // White for dark mode text
+          light: '#000000',
+          dark: '#ffffff',
         },
         main: {
-          dark: '#121212', // Adjusted dark color for main
+          dark: '#121212',
         },
         primary: {
           light: '#ffa600',
@@ -17,7 +17,7 @@ module.exports = {
         },
         secondary: {
           light: '#007bffcd',
-          dark: '#ff7d00', // Adjusted secondary color for dark mode
+          dark: '#0056B2CD',
         },
       },
     },
