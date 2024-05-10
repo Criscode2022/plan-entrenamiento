@@ -8,6 +8,7 @@ import { IndicemasaComponent } from './core/components/indicemasa/indicemasa.com
 const routes: Routes = [
   {
     path: '',
+    pathMatch: 'full',
     component: BienvenidaComponent,
   },
   { path: 'entrenadores', component: EntrenadoresComponent },
@@ -15,7 +16,7 @@ const routes: Routes = [
   { path: 'historias', component: HistoriasComponent },
 ];
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { useHash: true })],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}
