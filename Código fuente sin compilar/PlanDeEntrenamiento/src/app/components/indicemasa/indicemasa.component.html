@@ -24,7 +24,11 @@
   >
 </div>
 
-<form [formGroup]="imcForm" novalidate>
+<form
+  [formGroup]="imcForm"
+  (ngSubmit)="calcularIMC(this.altura, this.peso)"
+  novalidate
+>
   <mat-form-field>
     <mat-label>Peso en Kg</mat-label>
     <input matInput type="number" formControlName="peso" min="0" max="400" />
@@ -41,10 +45,7 @@
     >
   </mat-form-field>
 
-  <button
-    class="btn btn-block border-none bg-secondary-light text-text-dark"
-    (click)="calcularIMC(imcForm.value.altura, imcForm.value.peso)"
-  >
+  <button class="btn btn-block border-none bg-secondary-light text-text-dark">
     Calcular IMC
   </button>
 </form>
@@ -55,11 +56,14 @@
   <mat-error *ngIf="IMC >= 30">
     Tu IMC es superior al recomendado, tienes obesidad
   </mat-error>
+
   <mat-error *ngIf="IMC >= 25 && IMC < 30">
     Tu IMC es superior al recomendado, tienes sobrepeso
   </mat-error>
-  <div class="sucess" *ngIf="IMC >= 18.5 && IMC < 25">Tu IMC es correcto</div>
+
   <mat-error *ngIf="IMC < 18.5">
     Tu IMC es inferior al recomendado, tienes bajo peso
   </mat-error>
+
+  <div class="sucess" *ngIf="IMC >= 18.5 && IMC < 25">Tu IMC es correcto</div>
 </ng-container>

@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, inject } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { SharedDataService } from 'src/app/core/Services/shared-data/shared-service.service';
 
@@ -9,58 +9,55 @@ import { SharedDataService } from 'src/app/core/Services/shared-data/shared-serv
   styleUrls: ['./indicemasa.component.scss'],
 })
 export class IndicemasaComponent {
-  protected IMC: number | null = null;
-  protected colorTextoIMC: string | null = null;
-  protected imcForm: FormGroup;
+  protected IMC = 0;
+  protected colorTextoIMC = '';
 
-  constructor(
-    private sharedDataService: SharedDataService,
-    private snackBar: MatSnackBar,
-    private formBuilder: FormBuilder,
-  ) {
-    this.IMC = null;
-    this.colorTextoIMC = null;
-    this.imcForm = this.formBuilder.group({
-      peso: [
-        null,
-        [Validators.required, Validators.min(0), Validators.max(400)],
-      ],
-      altura: [
-        null,
-        [Validators.required, Validators.min(0), Validators.max(250)],
-      ],
-    });
+  private skeleton = {
+    peso: [0, [Validators.required, Validators.min(1), Validators.max(400)]],
+    altura: [0, [Validators.required, Validators.min(1), Validators.max(250)]],
+  };
+
+  protected formBuilder = inject(FormBuilder);
+
+  private sharedDataService = inject(SharedDataService);
+
+  private snackBar = inject(MatSnackBar);
+
+  protected imcForm = this.formBuilder.group(this.skeleton);
+
+  get peso() {
+    return this.imcForm.get('peso') as unknown as number;
+  }
+
+  get altura() {
+    return this.imcForm.get('altura') as unknown as number;
   }
 
   protected openSnackBar(message: string, action: string) {
     this.snackBar.open(message, action, { duration: 5000 });
   }
 
-  public calcularIMC(altura: number, peso: number) {
-    if (altura && peso) {
-      const metros = altura / 100;
-      this.IMC = +(peso / (metros * metros)).toFixed(2);
-
-      this.cambiarColor();
-
-      this.sharedDataService.setData(this.IMC);
-      this.sharedDataService.getData();
-
-      return this.IMC;
+  protected calcularIMC(altura: number, peso: number) {
+    if (!altura || !peso) {
+      return null;
     }
 
-    return null;
+    const metros = altura / 100;
+    this.IMC = parseFloat((peso / (metros * metros)).toFixed(2));
+
+    this.cambiarColor();
+
+    this.sharedDataService.setData(this.IMC);
+    this.sharedDataService.getData();
+
+    return this.IMC;
   }
 
-  public cambiarColor() {
-    if (this.IMC) {
-      if (this.IMC >= 25) {
-        this.colorTextoIMC = 'red';
-      } else if (this.IMC < 18.5) {
-        this.colorTextoIMC = 'red';
-      } else {
-        this.colorTextoIMC = 'green';
-      }
+  private cambiarColor() {
+    if ((this.IMC && this.IMC >= 25) || (this.IMC && this.IMC < 18.5)) {
+      this.colorTextoIMC = 'red';
+    } else {
+      this.colorTextoIMC = 'green';
     }
   }
 }
