@@ -9,15 +9,15 @@ import { StoriesService } from '../../core/Services/stories/stories.service';
   styleUrls: ['./insert-story.component.scss'],
 })
 export class InsertStoryComponent implements OnDestroy {
-  storyForm: FormGroup;
-  error: string | null = null;
+  protected storyForm: FormGroup;
+  protected error: string | null = null;
   private subscription: Subscription = new Subscription();
 
   constructor(
-    private formBuilder: FormBuilder,
+    private fb: FormBuilder,
     private storiesService: StoriesService,
   ) {
-    this.storyForm = this.formBuilder.group({
+    this.storyForm = this.fb.group({
       nombre: [
         '',
         [
@@ -27,16 +27,11 @@ export class InsertStoryComponent implements OnDestroy {
         ],
       ],
       apellido: ['', Validators.required],
-      edad: [
-        null,
-        [Validators.required, Validators.min(16), Validators.max(110)],
-      ],
+      edad: [0, [Validators.required, Validators.min(16), Validators.max(110)]],
       texto: ['', [Validators.required]],
       avatar: '',
     });
   }
-
-  ngOnInit() {}
 
   onSubmit() {
     if (this.storyForm.valid) {
@@ -45,7 +40,8 @@ export class InsertStoryComponent implements OnDestroy {
         .addPerson(newPerson)
         .subscribe({
           next: () => {
-            this.resetForm();
+            this.storyForm.reset();
+            this.markFormAsUntouchedPristine(this.storyForm);
           },
           error: (error) => {
             this.error = error.message;
@@ -55,15 +51,12 @@ export class InsertStoryComponent implements OnDestroy {
     }
   }
 
-  private resetForm() {
-    this.storyForm.reset({
-      nombre: null,
-      apellido: null,
-      edad: null,
-      texto: null,
-      avatar: null,
+  private markFormAsUntouchedPristine(form: FormGroup) {
+    form.markAsUntouched();
+    form.markAsPristine();
+    Object.keys(form.controls).forEach((control) => {
+      form.get(control)?.setErrors(null);
     });
-    this.error = null;
   }
 
   ngOnDestroy() {
