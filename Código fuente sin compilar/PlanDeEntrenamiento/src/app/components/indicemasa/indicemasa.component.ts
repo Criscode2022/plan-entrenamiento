@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { SharedDataService } from '../../Services/shared-data/shared-service.service';
+import { SharedDataService } from 'src/app/core/Services/shared-data/shared-service.service';
 
 @Component({
   selector: 'app-indicemasa',
@@ -38,6 +38,8 @@ export class IndicemasaComponent {
 
   public calcularIMC(altura: number, peso: number) {
     if (altura && peso) {
+      console.log('Altura: ', altura);
+      console.log('Peso: ', peso);
       const metros = altura / 100;
       this.IMC = +(peso / (metros * metros)).toFixed(2);
       this.cambiarColor();

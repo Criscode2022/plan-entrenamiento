@@ -12,15 +12,15 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { RouterModule } from '@angular/router';
-import { BienvenidaComponent } from './components/bienvenida/bienvenida.component';
+import { BienvenidaComponent } from '../components/bienvenida/bienvenida.component';
 import {
   DialogContentExampleDialog,
   DialogoComponent,
-} from './components/dialogo/dialogo.component';
-import { EntrenadoresComponent } from './components/entrenadores/entrenadores.component';
-import { HistoriasComponent } from './components/historias/historias.component';
-import { IndicemasaComponent } from './components/indicemasa/indicemasa.component';
-import { InsertStoryComponent } from './components/insert-story/insert-story.component';
+} from '../components/dialogo/dialogo.component';
+import { EntrenadoresComponent } from '../components/entrenadores/entrenadores.component';
+import { HistoriasComponent } from '../components/historias/historias.component';
+import { IndicemasaComponent } from '../components/indicemasa/indicemasa.component';
+import { InsertStoryComponent } from '../components/insert-story/insert-story.component';
 import { AsideComponent } from './layout/aside/aside.component';
 import { LayoutComponent } from './layout/layout.component';
 import { MainComponent } from './layout/main/main.component';

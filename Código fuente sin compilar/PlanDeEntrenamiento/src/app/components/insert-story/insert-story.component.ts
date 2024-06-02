@@ -1,7 +1,7 @@
 import { Component, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
-import { StoriesService } from '../../Services/stories/stories.service';
+import { StoriesService } from '../../core/Services/stories/stories.service';
 
 @Component({
   selector: 'app-insert-story',

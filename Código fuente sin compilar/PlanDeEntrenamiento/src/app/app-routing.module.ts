@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { BienvenidaComponent } from './core/components/bienvenida/bienvenida.component';
-import { EntrenadoresComponent } from './core/components/entrenadores/entrenadores.component';
-import { HistoriasComponent } from './core/components/historias/historias.component';
-import { IndicemasaComponent } from './core/components/indicemasa/indicemasa.component';
+import { BienvenidaComponent } from './components/bienvenida/bienvenida.component';
+import { EntrenadoresComponent } from './components/entrenadores/entrenadores.component';
+import { HistoriasComponent } from './components/historias/historias.component';
+import { IndicemasaComponent } from './components/indicemasa/indicemasa.component';
 
 const routes: Routes = [
   {
