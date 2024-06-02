@@ -14,7 +14,7 @@ export class IndicemasaComponent {
   protected imcForm: FormGroup;
 
   constructor(
-    private SharedDataService: SharedDataService,
+    private sharedDataService: SharedDataService,
     private snackBar: MatSnackBar,
     private formBuilder: FormBuilder,
   ) {
@@ -32,7 +32,7 @@ export class IndicemasaComponent {
     });
   }
 
-  openSnackBar(message: string, action: string) {
+  protected openSnackBar(message: string, action: string) {
     this.snackBar.open(message, action, { duration: 5000 });
   }
 
@@ -43,8 +43,8 @@ export class IndicemasaComponent {
 
       this.cambiarColor();
 
-      this.SharedDataService.setData(this.IMC);
-      this.SharedDataService.getData();
+      this.sharedDataService.setData(this.IMC);
+      this.sharedDataService.getData();
 
       return this.IMC;
     }
