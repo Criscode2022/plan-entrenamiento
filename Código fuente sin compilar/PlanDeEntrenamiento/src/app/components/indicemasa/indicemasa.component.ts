@@ -10,7 +10,6 @@ import { SharedDataService } from 'src/app/core/Services/shared-data/shared-serv
 })
 export class IndicemasaComponent {
   protected IMC = 0;
-  protected colorTextoIMC = '';
 
   private skeleton = {
     peso: [0, [Validators.required, Validators.min(1), Validators.max(400)]],
@@ -23,41 +22,50 @@ export class IndicemasaComponent {
 
   private snackBar = inject(MatSnackBar);
 
-  protected imcForm = this.formBuilder.group(this.skeleton);
+  protected form = this.formBuilder.group(this.skeleton);
 
   get peso() {
-    return this.imcForm.get('peso') as unknown as number;
+    return this.form.get('peso');
   }
 
   get altura() {
-    return this.imcForm.get('altura') as unknown as number;
+    return this.form.get('altura');
   }
 
   protected openSnackBar(message: string, action: string) {
-    this.snackBar.open(message, action, { duration: 5000 });
+    this.snackBar.open(message, action, { duration: 6000 });
   }
 
   protected calcularIMC(altura: number, peso: number) {
     if (!altura || !peso) {
-      return null;
+      console.error('Altura o peso no definidos');
+      return;
     }
 
     const metros = altura / 100;
     this.IMC = parseFloat((peso / (metros * metros)).toFixed(2));
 
-    this.cambiarColor();
-
     this.sharedDataService.setData(this.IMC);
-    this.sharedDataService.getData();
+
+    if (this.IMC >= 30) {
+      this.openSnackBar(
+        'Tu IMC es superior al recomendado, tienes obesidad',
+        'Cerrar',
+      );
+    } else if (this.IMC >= 25 && this.IMC < 30) {
+      this.openSnackBar(
+        'Tu IMC es superior al recomendado, tienes sobrepeso',
+        'Cerrar',
+      );
+    } else if (this.IMC < 18.5) {
+      this.openSnackBar(
+        'Tu IMC es inferior al recomendado, tienes bajo peso',
+        'Cerrar',
+      );
+    } else {
+      this.openSnackBar('Tu IMC es el recomendado', 'Cerrar');
+    }
 
     return this.IMC;
-  }
-
-  private cambiarColor() {
-    if ((this.IMC && this.IMC >= 25) || (this.IMC && this.IMC < 18.5)) {
-      this.colorTextoIMC = 'red';
-    } else {
-      this.colorTextoIMC = 'green';
-    }
   }
 }

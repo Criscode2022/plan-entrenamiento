@@ -5,7 +5,7 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root',
 })
 export class SharedDataService {
-  private IMCSubject = new BehaviorSubject<number | null>(null);
+  private IMCSubject = new BehaviorSubject<number>(0);
 
   // Only-reading Observable
   public IMC$ = this.IMCSubject.asObservable();
@@ -14,11 +14,5 @@ export class SharedDataService {
 
   setData(data: number) {
     this.IMCSubject.next(data);
-  }
-
-  //Getter for cases that don't need reactivity
-
-  getData(): number {
-    return this.IMCSubject.getValue() || 0;
   }
 }
