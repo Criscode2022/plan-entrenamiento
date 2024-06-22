@@ -79,6 +79,8 @@ export class AsideComponent extends AsideForm implements OnInit, OnDestroy {
       '¡Listo! Tus datos han sido enviados correctamente, pronto nos pondremos en contacto contigo',
       'Cerrar',
     );
+
+    this.reset();
   }
 
   ngOnDestroy(): void {

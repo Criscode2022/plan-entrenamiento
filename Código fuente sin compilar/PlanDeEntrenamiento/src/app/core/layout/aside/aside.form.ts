@@ -1,5 +1,10 @@
 import { inject } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 
 export class AsideForm {
   private formBuilder = inject(FormBuilder);
@@ -33,6 +38,7 @@ export class AsideForm {
   get email() {
     return this.form.get('email')?.value;
   }
+
   protected reset() {
     this.form.reset({
       nombre: '',
@@ -41,7 +47,19 @@ export class AsideForm {
       selectOption: null,
       email: '',
     });
-    this.form.markAsPristine();
-    this.form.markAsUntouched();
+
+    this.markFormGroupPristineAndUntouched(this.form);
+  }
+
+  private markFormGroupPristineAndUntouched(formGroup: FormGroup) {
+    Object.keys(formGroup.controls).forEach((key) => {
+      const control = formGroup.get(key);
+      if (control instanceof FormControl) {
+        control.markAsPristine();
+        control.markAsUntouched();
+      } else if (control instanceof FormGroup) {
+        this.markFormGroupPristineAndUntouched(control);
+      }
+    });
   }
 }
