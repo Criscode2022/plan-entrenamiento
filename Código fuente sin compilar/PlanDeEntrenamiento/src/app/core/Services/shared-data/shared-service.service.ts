@@ -5,14 +5,14 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root',
 })
 export class SharedDataService {
-  private IMCSubject = new BehaviorSubject<number>(0);
+  // BehaviorSubject to store the data, null by default to not show anything
+
+  private IMCSubject = new BehaviorSubject<number | null>(null);
 
   // Only-reading Observable
   public IMC$ = this.IMCSubject.asObservable();
 
-  constructor() {}
-
-  setData(data: number) {
+  public setData(data: number) {
     this.IMCSubject.next(data);
   }
 }

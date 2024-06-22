@@ -1,8 +1,10 @@
 import { inject } from '@angular/core';
 import {
+  AbstractControl,
   FormBuilder,
   FormControl,
   FormGroup,
+  ValidationErrors,
   Validators,
 } from '@angular/forms';
 
@@ -12,7 +14,7 @@ export class AsideForm {
   private skeleton = {
     nombre: ['', [Validators.required]],
     edad: ['', [Validators.required, Validators.min(16)]],
-    IMC: [0, [Validators.required]],
+    IMC: [null as number | null, [Validators.required, this.nullableMin(0)]],
     selectOption: [null, [Validators.required]],
     email: ['', [Validators.required, Validators.email]],
   };
@@ -43,7 +45,7 @@ export class AsideForm {
     this.form.reset({
       nombre: '',
       edad: '',
-      IMC: 0,
+      IMC: null,
       selectOption: null,
       email: '',
     });
@@ -61,5 +63,15 @@ export class AsideForm {
         this.markFormGroupPristineAndUntouched(control);
       }
     });
+  }
+
+  private nullableMin(min: number) {
+    return (control: AbstractControl): ValidationErrors | null => {
+      const value = control.value;
+      if (value === null || value >= min) {
+        return null;
+      }
+      return { min: { min, actual: value } };
+    };
   }
 }
