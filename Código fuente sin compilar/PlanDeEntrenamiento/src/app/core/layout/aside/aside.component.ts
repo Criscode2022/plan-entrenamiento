@@ -1,6 +1,5 @@
 import { Component, OnDestroy, OnInit, inject } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Subscription } from 'rxjs';
 import * as XLSX from 'xlsx';
 import { SharedDataService } from '../../Services/shared-data/shared-service.service';
 import { AsideForm } from './aside.form';
@@ -11,7 +10,6 @@ import { AsideForm } from './aside.form';
   styleUrls: ['./aside.component.scss'],
 })
 export class AsideComponent extends AsideForm implements OnInit, OnDestroy {
-  private subs = new Subscription();
   protected entrenador = '';
 
   private snackBar = inject(MatSnackBar);
@@ -81,9 +79,5 @@ export class AsideComponent extends AsideForm implements OnInit, OnDestroy {
     );
 
     this.reset();
-  }
-
-  ngOnDestroy(): void {
-    this.subs.unsubscribe();
   }
 }

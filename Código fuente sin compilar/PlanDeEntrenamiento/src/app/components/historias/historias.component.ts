@@ -1,24 +1,24 @@
 // historias.component.ts
-import { Component, OnDestroy } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Component, OnDestroy, OnInit, inject } from '@angular/core';
 import { StoriesService } from '../../core/Services/stories/stories.service';
+import { SubsDirective } from '../../core/directives/subs.directive';
 
 @Component({
   selector: 'app-historias',
   templateUrl: './historias.component.html',
   styleUrls: ['./historias.component.scss'],
 })
-export class HistoriasComponent implements OnDestroy {
+export class HistoriasComponent
+  extends SubsDirective
+  implements OnInit, OnDestroy
+{
   userData: any[] = [];
-  private subscription: Subscription;
 
-  constructor(private storiesService: StoriesService) {
-    this.subscription = this.storiesService.userData$.subscribe((data) => {
+  private storiesService = inject(StoriesService);
+
+  ngOnInit(): void {
+    this.subs = this.storiesService.userData$.subscribe((data) => {
       this.userData = data;
     });
-  }
-
-  ngOnDestroy() {
-    this.subscription.unsubscribe();
   }
 }

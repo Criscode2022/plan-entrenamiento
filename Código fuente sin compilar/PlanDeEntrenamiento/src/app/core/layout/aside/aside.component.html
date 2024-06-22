@@ -2,15 +2,11 @@
 
 <h2>Solicita tu plan personalizado</h2>
 
-<form [formGroup]="form" class="flex flex-col gap-2" novalidate>
+<form [formGroup]="form" class="flex flex-col gap-2">
   <mat-form-field>
     <mat-label>Nombre</mat-label>
     <input matInput formControlName="nombre" maxlength="20" required />
-    <mat-error
-      *ngIf="
-        form.get('nombre')?.hasError('required') && form.get('nombre')?.touched
-      "
-    >
+    <mat-error *ngIf="form.get('nombre')?.hasError('required')">
       Introduce tu nombre
     </mat-error>
   </mat-form-field>
@@ -18,7 +14,7 @@
   <mat-form-field>
     <mat-label>Edad</mat-label>
     <input matInput type="number" formControlName="edad" min="16" />
-    <mat-error *ngIf="form.get('edad')?.errors && form.get('edad')?.touched">
+    <mat-error *ngIf="form.get('edad')?.errors">
       Introduce una edad válida
     </mat-error>
   </mat-form-field>
@@ -28,9 +24,7 @@
   >
     <mat-label>IMC</mat-label>
     <input matInput type="number" formControlName="IMC" readonly />
-    <mat-error
-      *ngIf="form.get('IMC')?.hasError('required') && form.get('IMC')?.touched"
-    >
+    <mat-error *ngIf="form.get('IMC')?.hasError('required')">
       Calcula tu IMC en la sección "Calcular IMC"
     </mat-error>
   </mat-form-field>
@@ -38,16 +32,10 @@
   <mat-form-field>
     <mat-label>Email</mat-label>
     <input matInput type="email" formControlName="email" maxlength="50" />
-    <mat-error
-      *ngIf="
-        form.get('email')?.hasError('required') && form.get('email')?.touched
-      "
-    >
+    <mat-error *ngIf="form.get('email')?.hasError('required')">
       Introduce tu email
     </mat-error>
-    <mat-error
-      *ngIf="form.get('email')?.hasError('email') && form.get('email')?.touched"
-    >
+    <mat-error *ngIf="form.get('email')?.hasError('email')">
       Introduce un email válido
     </mat-error>
   </mat-form-field>
@@ -72,12 +60,7 @@
         >Conseguir masa muscular</mat-option
       >
     </mat-select>
-    <mat-error
-      *ngIf="
-        form.get('selectOption')?.hasError('required') &&
-        form.get('selectOption')?.touched
-      "
-    >
+    <mat-error *ngIf="form.get('selectOption')?.hasError('required')">
       Selecciona tu objetivo
     </mat-error>
   </mat-form-field>

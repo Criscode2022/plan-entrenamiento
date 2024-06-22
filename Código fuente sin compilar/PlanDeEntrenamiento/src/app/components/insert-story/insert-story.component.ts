@@ -1,6 +1,6 @@
 import { Component, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Subscription } from 'rxjs';
+import { SubsDirective } from 'src/app/core/directives/subs.directive';
 import { StoriesService } from '../../core/Services/stories/stories.service';
 
 @Component({
@@ -8,15 +8,15 @@ import { StoriesService } from '../../core/Services/stories/stories.service';
   templateUrl: './insert-story.component.html',
   styleUrls: ['./insert-story.component.scss'],
 })
-export class InsertStoryComponent implements OnDestroy {
+export class InsertStoryComponent extends SubsDirective implements OnDestroy {
   protected storyForm: FormGroup;
   protected error: string | null = null;
-  private subscription: Subscription = new Subscription();
 
   constructor(
     private fb: FormBuilder,
     private storiesService: StoriesService,
   ) {
+    super();
     this.storyForm = this.fb.group({
       nombre: [
         '',
@@ -47,7 +47,7 @@ export class InsertStoryComponent implements OnDestroy {
             this.error = error.message;
           },
         });
-      this.subscription.add(addPersonSubscription);
+      this.subs.add(addPersonSubscription);
     }
   }
 
@@ -57,9 +57,5 @@ export class InsertStoryComponent implements OnDestroy {
     Object.keys(form.controls).forEach((control) => {
       form.get(control)?.setErrors(null);
     });
-  }
-
-  ngOnDestroy() {
-    this.subscription.unsubscribe();
   }
 }

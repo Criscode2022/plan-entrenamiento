@@ -7,8 +7,9 @@ import {
   ValidationErrors,
   Validators,
 } from '@angular/forms';
+import { SubsDirective } from '../../directives/subs.directive';
 
-export class AsideForm {
+export class AsideForm extends SubsDirective {
   private formBuilder = inject(FormBuilder);
 
   private skeleton = {
