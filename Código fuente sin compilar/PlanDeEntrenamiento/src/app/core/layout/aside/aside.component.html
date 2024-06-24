@@ -6,7 +6,7 @@
   <mat-form-field>
     <mat-label>Nombre</mat-label>
     <input matInput formControlName="nombre" maxlength="20" required />
-    <mat-error *ngIf="form.get('nombre')?.hasError('required')">
+    <mat-error *ngIf="this.nombre?.hasError('required')">
       Introduce tu nombre
     </mat-error>
   </mat-form-field>
@@ -14,9 +14,7 @@
   <mat-form-field>
     <mat-label>Edad</mat-label>
     <input matInput type="number" formControlName="edad" min="16" />
-    <mat-error *ngIf="form.get('edad')?.errors">
-      Introduce una edad válida
-    </mat-error>
+    <mat-error *ngIf="this.edad?.errors"> Introduce una edad válida </mat-error>
   </mat-form-field>
 
   <mat-form-field
@@ -24,7 +22,7 @@
   >
     <mat-label>IMC</mat-label>
     <input matInput type="number" formControlName="IMC" readonly />
-    <mat-error *ngIf="form.get('IMC')?.hasError('required')">
+    <mat-error *ngIf="this.IMC?.hasError('required')">
       Calcula tu IMC en la sección "Calcular IMC"
     </mat-error>
   </mat-form-field>
@@ -32,10 +30,10 @@
   <mat-form-field>
     <mat-label>Email</mat-label>
     <input matInput type="email" formControlName="email" maxlength="50" />
-    <mat-error *ngIf="form.get('email')?.hasError('required')">
+    <mat-error *ngIf="this.email?.hasError('required')">
       Introduce tu email
     </mat-error>
-    <mat-error *ngIf="form.get('email')?.hasError('email')">
+    <mat-error *ngIf="this.email?.hasError('email')">
       Introduce un email válido
     </mat-error>
   </mat-form-field>
@@ -60,7 +58,7 @@
         >Conseguir masa muscular</mat-option
       >
     </mat-select>
-    <mat-error *ngIf="form.get('selectOption')?.hasError('required')">
+    <mat-error *ngIf="this.selectOption?.hasError('required')">
       Selecciona tu objetivo
     </mat-error>
   </mat-form-field>

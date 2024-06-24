@@ -12,7 +12,7 @@ export class HistoriasComponent
   extends SubsDirective
   implements OnInit, OnDestroy
 {
-  userData: any[] = [];
+  protected userData: any[] = [];
 
   private storiesService = inject(StoriesService);
 

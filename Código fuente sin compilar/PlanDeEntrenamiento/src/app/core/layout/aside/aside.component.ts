@@ -34,13 +34,15 @@ export class AsideComponent extends AsideForm implements OnInit, OnDestroy {
     }
 
     const data = {
-      nombre: this.nombre,
-      edad: this.edad,
-      objetivo: this.selectOption,
+      nombre: this.nombre?.value,
+      edad: this.edad?.value,
+      objetivo: this.selectOption?.value,
       entrenador: this.entrenador,
-      imc: this.IMC,
-      email: this.email,
+      imc: this.IMC?.value,
+      email: this.email?.value,
     };
+
+    console.log(data);
 
     // XLSX library to export data to excel
 

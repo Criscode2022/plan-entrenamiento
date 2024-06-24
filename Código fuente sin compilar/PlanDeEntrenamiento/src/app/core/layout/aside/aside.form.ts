@@ -15,7 +15,7 @@ export class AsideForm extends SubsDirective {
   private skeleton = {
     nombre: ['', [Validators.required]],
     edad: ['', [Validators.required, Validators.min(16)]],
-    IMC: [null as number | null, [Validators.required, this.nullableMin(0)]],
+    IMC: [null as number | null, [Validators.required, this.nullableMin(1)]],
     selectOption: [null, [Validators.required]],
     email: ['', [Validators.required, Validators.email]],
   };
@@ -23,23 +23,23 @@ export class AsideForm extends SubsDirective {
   protected form = this.formBuilder.group(this.skeleton);
 
   get IMC() {
-    return this.form.get('IMC')?.value;
+    return this.form.get('IMC');
   }
 
   get nombre() {
-    return this.form.get('nombre')?.value;
+    return this.form.get('nombre');
   }
 
   get edad() {
-    return this.form.get('edad')?.value;
+    return this.form.get('edad');
   }
 
   get selectOption() {
-    return this.form.get('selectOption')?.value;
+    return this.form.get('selectOption');
   }
 
   get email() {
-    return this.form.get('email')?.value;
+    return this.form.get('email');
   }
 
   protected reset() {

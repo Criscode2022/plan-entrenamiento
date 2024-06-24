@@ -32,15 +32,13 @@
   <mat-form-field>
     <mat-label>Peso en Kg</mat-label>
     <input matInput type="number" formControlName="peso" min="0" max="400" />
-    <mat-error *ngIf="form.get('peso')?.errors">
-      Introduce un peso válido</mat-error
-    >
+    <mat-error *ngIf="this.peso?.errors"> Introduce un peso válido</mat-error>
   </mat-form-field>
 
   <mat-form-field>
     <mat-label>Altura en cm</mat-label>
     <input matInput type="number" formControlName="altura" min="0" max="250" />
-    <mat-error *ngIf="form.get('altura')?.errors"
+    <mat-error *ngIf="this.altura?.errors"
       >Introduce una altura válida</mat-error
     >
   </mat-form-field>

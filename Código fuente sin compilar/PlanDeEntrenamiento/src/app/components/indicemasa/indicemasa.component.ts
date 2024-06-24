@@ -1,40 +1,19 @@
 import { Component, inject } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { SharedDataService } from 'src/app/core/Services/shared-data/shared-service.service';
+import { IndiceMasaForm } from './indicemasa.form';
 
 @Component({
   selector: 'app-indicemasa',
   templateUrl: './indicemasa.component.html',
   styleUrls: ['./indicemasa.component.scss'],
 })
-export class IndicemasaComponent {
+export class IndicemasaComponent extends IndiceMasaForm {
   protected IMC = 0;
-
-  private skeleton = {
-    peso: [0, [Validators.required, Validators.min(1), Validators.max(400)]],
-    altura: [0, [Validators.required, Validators.min(1), Validators.max(250)]],
-  };
-
-  protected formBuilder = inject(FormBuilder);
 
   private sharedDataService = inject(SharedDataService);
 
   private snackBar = inject(MatSnackBar);
-
-  protected form = this.formBuilder.group(this.skeleton);
-
-  get peso() {
-    return this.form.get('peso');
-  }
-
-  get altura() {
-    return this.form.get('altura');
-  }
-
-  protected openSnackBar(message: string, action: string) {
-    this.snackBar.open(message, action, { duration: 6000 });
-  }
 
   protected calcularIMC(altura: number, peso: number) {
     if (!altura || !peso) {
@@ -67,5 +46,9 @@ export class IndicemasaComponent {
     }
 
     return this.IMC;
+  }
+
+  protected openSnackBar(message: string, action: string) {
+    this.snackBar.open(message, action, { duration: 6000 });
   }
 }
