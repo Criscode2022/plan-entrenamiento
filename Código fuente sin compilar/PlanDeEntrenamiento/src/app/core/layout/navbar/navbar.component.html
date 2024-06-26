@@ -11,21 +11,21 @@
 
   <button
     routerLink="/indicemasa"
-    class="btn btn-block bg-primary-light dark:bg-primary-dark rounded shadow-xl border-none text-text-light dark:text-text-dark hover:text-text-dark"
+    class="btn btn-block bg-primary-light dark:bg-primary-dark rounded shadow-xl border-none text-black dark:text-white hover:text-white"
   >
     Calcular IMC
   </button>
 
   <button
     routerLink="/entrenadores"
-    class="btn btn-block bg-primary-light dark:bg-primary-dark rounded shadow-xl border-none text-text-light dark:text-text-dark hover:text-text-dark"
+    class="btn btn-block bg-primary-light dark:bg-primary-dark rounded shadow-xl border-none text-black dark:text-white hover:text-white"
   >
     Entrenadores
   </button>
 
   <button
     routerLink="/historias"
-    class="btn btn-block bg-primary-light dark:bg-primary-dark rounded shadow-xl border-none text-text-light dark:text-text-dark hover:text-text-dark"
+    class="btn btn-block bg-primary-light dark:bg-primary-dark rounded shadow-xl border-none text-black dark:text-white hover:text-white"
   >
     Experiencias
   </button>
@@ -36,18 +36,16 @@
     routerLink="/"
     mat-fab
     aria-label="Home icon button with a home icon"
-    class="bg-primary dark:bg-primary-dark"
+    class="bg-primary dark:bg-primary-dark dark:text-white"
   >
     <mat-icon>home</mat-icon>
   </button>
   <button
     mat-fab
     (click)="toggleGroup()"
-    class="bg-primary dark:bg-primary-dark"
+    class="bg-primary dark:bg-primary-dark text-black dark:text-white"
   >
-    <mat-icon style="color: white">{{
-      isHidden ? 'arrow_drop_up' : 'arrow_drop_down'
-    }}</mat-icon>
+    <mat-icon>{{ isHidden ? 'arrow_drop_up' : 'arrow_drop_down' }}</mat-icon>
   </button>
   <div *ngIf="isHidden" id="smalllinks">
     <a routerLink="/indicemasa" (click)="toggleGroup()" mat-raised-button
