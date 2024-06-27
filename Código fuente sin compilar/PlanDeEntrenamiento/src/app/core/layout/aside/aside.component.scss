@@ -9,6 +9,11 @@ h2 {
   font-weight: bold;
 }
 
+.aside-header {
+
+  z-index: 1000000000 !important;
+}
+
 @media (min-width: 701px) {
   mat-icon {
     display: none;
