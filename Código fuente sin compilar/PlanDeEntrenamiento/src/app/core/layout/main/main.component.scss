@@ -1,7 +1,7 @@
 .router-outlet-container {
   margin: 40pt;
   min-height: 100vh;
-  z-index: -1;
+  z-index: -1 !important;
 }
 
 h1 {
