@@ -1,7 +1,7 @@
 import { Component, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SubsDirective } from 'src/app/core/directives/subs.directive';
-import { StoriesService } from '../../core/Services/stories/stories.service';
+import { StoriesService } from '../core/Services/stories/stories.service';
 
 @Component({
   selector: 'app-insert-story',

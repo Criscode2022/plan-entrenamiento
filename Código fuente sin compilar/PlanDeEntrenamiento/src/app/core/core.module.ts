@@ -12,15 +12,12 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { RouterModule } from '@angular/router';
-import { BienvenidaComponent } from '../components/bienvenida/bienvenida.component';
-import {
-  DialogContentExampleDialog,
-  DialogoComponent,
-} from '../components/dialogo/dialogo.component';
-import { EntrenadoresComponent } from '../components/entrenadores/entrenadores.component';
-import { HistoriasComponent } from '../components/historias/historias.component';
-import { IndicemasaComponent } from '../components/indicemasa/indicemasa.component';
-import { InsertStoryComponent } from '../components/insert-story/insert-story.component';
+import { BienvenidaComponent } from '../bienvenida/bienvenida.component';
+import { EntrenadoresComponent } from '../entrenadores/entrenadores.component';
+import { HistoriasComponent } from '../historias/historias.component';
+import { IndicemasaComponent } from '../indicemasa/indicemasa.component';
+import { InsertStoryComponent } from '../insert-story/insert-story.component';
+import { DialogoComponent } from '../shared/dialogs/dialogo/dialogo.component';
 import { AsideComponent } from './layout/aside/aside.component';
 import { LayoutComponent } from './layout/layout.component';
 import { MainComponent } from './layout/main/main.component';
@@ -34,28 +31,27 @@ import { NavbarComponent } from './layout/navbar/navbar.component';
     BienvenidaComponent,
     EntrenadoresComponent,
     IndicemasaComponent,
-    DialogoComponent,
-    DialogContentExampleDialog,
     NavbarComponent,
     HistoriasComponent,
     InsertStoryComponent,
   ],
   exports: [LayoutComponent],
   imports: [
+    DialogoComponent,
     CommonModule,
-    MatFormFieldModule,
-    MatInputModule,
     FormsModule,
     HttpClientModule,
-    MatSelectModule,
-    MatDialogModule,
-    MatTooltipModule,
     ReactiveFormsModule,
     RouterModule,
-    MatIconModule,
-    MatCardModule,
     MatButtonModule,
+    MatCardModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatIconModule,
+    MatInputModule,
+    MatSelectModule,
     MatSnackBarModule,
+    MatTooltipModule,
   ],
 })
 export class CoreModule {}

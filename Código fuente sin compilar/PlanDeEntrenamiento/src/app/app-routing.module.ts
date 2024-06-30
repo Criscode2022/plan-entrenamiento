@@ -1,14 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { BienvenidaComponent } from './components/bienvenida/bienvenida.component';
-import { EntrenadoresComponent } from './components/entrenadores/entrenadores.component';
-import { HistoriasComponent } from './components/historias/historias.component';
-import { IndicemasaComponent } from './components/indicemasa/indicemasa.component';
+import { BienvenidaComponent } from './bienvenida/bienvenida.component';
+import { EntrenadoresComponent } from './entrenadores/entrenadores.component';
+import { HistoriasComponent } from './historias/historias.component';
+import { IndicemasaComponent } from './indicemasa/indicemasa.component';
 
 const routes: Routes = [
   {
     path: '',
-    pathMatch: 'full',
     component: BienvenidaComponent,
   },
   { path: 'entrenadores', component: EntrenadoresComponent },
