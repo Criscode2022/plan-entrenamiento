@@ -15,10 +15,7 @@ export class AsideForm extends SubsDirective {
   private skeleton = {
     nombre: ['', [Validators.required]],
     edad: ['', [Validators.required, Validators.min(16)]],
-    IMC: [
-      { value: null as number | null, disabled: true },
-      [Validators.required, this.nullableMin(1)],
-    ],
+    IMC: [null as number | null, [Validators.required, this.nullableMin(1)]],
     selectOption: [null, [Validators.required]],
     email: ['', [Validators.required, Validators.email]],
   };
