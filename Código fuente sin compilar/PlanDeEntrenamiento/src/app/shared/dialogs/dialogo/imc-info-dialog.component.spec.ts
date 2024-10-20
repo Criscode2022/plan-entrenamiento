@@ -1,17 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ImcInfoDialog } from './imc-info-dialog.component';
 
-import { DialogoComponent } from './dialogo.component';
-
-describe('DialogoComponent', () => {
-  let component: DialogoComponent;
-  let fixture: ComponentFixture<DialogoComponent>;
+describe('ImcInfoDialog', () => {
+  let component: ImcInfoDialog;
+  let fixture: ComponentFixture<ImcInfoDialog>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [DialogoComponent],
+      declarations: [ImcInfoDialog],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(DialogoComponent);
+    fixture = TestBed.createComponent(ImcInfoDialog);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

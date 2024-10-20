@@ -14,10 +14,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { RouterModule } from '@angular/router';
 import { BienvenidaComponent } from '../bienvenida/bienvenida.component';
 import { EntrenadoresComponent } from '../entrenadores/entrenadores.component';
-import { HistoriasComponent } from '../historias/historias.component';
 import { IndicemasaComponent } from '../indicemasa/indicemasa.component';
-import { InsertStoryComponent } from '../insert-story/insert-story.component';
-import { DialogoComponent } from '../shared/dialogs/dialogo/dialogo.component';
+import { ImcInfoDialog } from '../shared/dialogs/dialogo/imc-info-dialog.component';
 import { AsideComponent } from './layout/aside/aside.component';
 import { LayoutComponent } from './layout/layout.component';
 import { MainComponent } from './layout/main/main.component';
@@ -32,12 +30,10 @@ import { NavbarComponent } from './layout/navbar/navbar.component';
     EntrenadoresComponent,
     IndicemasaComponent,
     NavbarComponent,
-    HistoriasComponent,
-    InsertStoryComponent,
   ],
   exports: [LayoutComponent],
   imports: [
-    DialogoComponent,
+    ImcInfoDialog,
     CommonModule,
     FormsModule,
     HttpClientModule,

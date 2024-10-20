@@ -1,6 +1,8 @@
 import { Component, inject } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { SharedDataService } from 'src/app/core/Services/shared-data/shared-service.service';
+import { ImcInfoDialog } from '../shared/dialogs/dialogo/imc-info-dialog.component';
 import { IndiceMasaForm } from './indicemasa.form';
 
 @Component({
@@ -11,9 +13,15 @@ import { IndiceMasaForm } from './indicemasa.form';
 export class IndicemasaComponent extends IndiceMasaForm {
   protected IMC = 0;
 
+  protected dialog = inject(MatDialog);
+
   private sharedDataService = inject(SharedDataService);
 
   private snackBar = inject(MatSnackBar);
+
+  protected openDialog() {
+    this.dialog.open(ImcInfoDialog);
+  }
 
   protected calcularIMC(altura: number, peso: number) {
     if (!altura || !peso) {

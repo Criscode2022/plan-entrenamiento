@@ -49,5 +49,11 @@
 </form>
 
 <ng-container *ngIf="!!IMC">
-  <div id="resultado">IMC: {{ IMC }} <app-dialogo></app-dialogo></div>
+  <div id="resultado">
+    IMC: {{ IMC }}
+
+    <button mat-mini-fab color="warn" (click)="openDialog()" class="m-5">
+      <mat-icon>info</mat-icon>
+    </button>
+  </div>
 </ng-container>

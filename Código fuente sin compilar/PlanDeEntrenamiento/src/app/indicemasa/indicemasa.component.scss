@@ -44,3 +44,13 @@ mat-form-field:first-child {
     width: 90%;
   }
 }
+
+table,
+th,
+td {
+  text-align: center;
+
+  border: solid black 1px;
+
+  padding: 10pt;
+}
