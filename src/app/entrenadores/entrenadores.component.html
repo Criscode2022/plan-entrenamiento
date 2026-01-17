@@ -1,114 +1,129 @@
-<div class="flex flex-col gap-4 lg:flex-row">
-  <div class="containerCard">
-    <div
-      class="card card-compact w-70 shadow-lg dark:shadow-orange-100 bg-white dark:bg-gray-800 transition-all duration-300 ease-in-out"
-    >
-      <figure class="overflow-hidden">
+<div class="trainers-container animate-fade-in">
+  <div class="trainers-header">
+    <h1 class="page-title">
+      <mat-icon class="title-icon">groups</mat-icon>
+      <span class="gradient-text">Nuestros Entrenadores</span>
+    </h1>
+    <p class="page-subtitle">
+      Profesionales expertos dedicados a transformar tu salud y bienestar
+    </p>
+  </div>
+
+  <div class="trainers-grid">
+    <!-- Carla Alonso -->
+    <div class="trainer-card animate-slide-up">
+      <div class="card-image">
         <img
           src="assets/avatarcarla.svg"
           alt="Foto de primer plano de Carla"
-          class="hover:opacity-90 transition-opacity duration-300"
+          class="trainer-photo"
         />
-      </figure>
-      <div class="card-body p-4 h-90">
-        <div class="space-y-2">
-          <h2 class="text-2xl font-bold text-gray-900 dark:text-white">
-            Carla Alonso
-          </h2>
-          <div class="bg-gray-300 dark:bg-gray-600 h-px"></div>
-          <p class="text-sm font-semibold text-gray-500 dark:text-gray-400">
-            Especialista en pérdida de grasa
-          </p>
+        <div class="image-overlay">
+          <div class="specialty-badge">
+            <mat-icon>local_fire_department</mat-icon>
+            <span>Pérdida de grasa</span>
+          </div>
         </div>
-        <p class="text-gray-600 dark:text-gray-300 text-sm mt-4 h-72">
+      </div>
+
+      <div class="card-content">
+        <div class="trainer-header">
+          <h2 class="trainer-name">Carla Alonso</h2>
+          <div class="specialty-tag">
+            <mat-icon>trending_down</mat-icon>
+            <span>Especialista en pérdida de grasa</span>
+          </div>
+        </div>
+
+        <p class="trainer-bio">
           Con casi dos décadas de experiencias exitosas a sus espaldas con
           pacientes de gran diversidad, Carla se especializó en la pérdida de
           grasa al tomar conciencia del cambio en la calidad de vida que suponía
-          esta intervención especializada que transforma cuerpo y mente
+          esta intervención especializada que transforma cuerpo y mente.
         </p>
-        <div class="card-actions justify-end mt-4">
-          <a
-            href="mailto:carlaalonso@plan.com"
-            class="btn m-auto bg-gray-500 border border-gray-300 dark:border-gray-600 text-white hover:text-black hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors duration-300 ease-in-out text-sm py-2 px-4"
-            >CONTACTAR</a
-          >
-        </div>
+
+        <a href="mailto:carlaalonso@plan.com" class="contact-button">
+          <mat-icon>email</mat-icon>
+          <span>Contactar</span>
+        </a>
       </div>
     </div>
-  </div>
 
-  <div class="containerCard">
-    <div
-      class="card card-compact w-70 shadow-lg dark:shadow-orange-100 bg-white dark:bg-gray-800 transition-all duration-300 ease-in-out"
-    >
-      <figure class="overflow-hidden">
+    <!-- Manuel Rodríguez -->
+    <div class="trainer-card animate-slide-up" style="animation-delay: 0.1s">
+      <div class="card-image">
         <img
           src="assets/avatarmanuel.svg"
           alt="Foto de primer plano de Manuel"
-          class="hover:opacity-90 transition-opacity duration-300"
+          class="trainer-photo"
         />
-      </figure>
-      <div class="card-body p-4">
-        <div class="space-y-2">
-          <h2 class="text-2xl font-bold text-gray-900 dark:text-white">
-            Manuel Rodríguez
-          </h2>
-          <div class="bg-gray-300 dark:bg-gray-600 h-px"></div>
-          <p class="text-sm font-semibold text-gray-500 dark:text-gray-400">
-            Especialista en salud cardiovascular
-          </p>
+        <div class="image-overlay">
+          <div class="specialty-badge">
+            <mat-icon>favorite</mat-icon>
+            <span>Salud cardiovascular</span>
+          </div>
         </div>
-        <p class="text-gray-600 dark:text-gray-300 text-sm mt-4 h-72">
+      </div>
+
+      <div class="card-content">
+        <div class="trainer-header">
+          <h2 class="trainer-name">Manuel Rodríguez</h2>
+          <div class="specialty-tag">
+            <mat-icon>favorite</mat-icon>
+            <span>Especialista en salud cardiovascular</span>
+          </div>
+        </div>
+
+        <p class="trainer-bio">
           Consciente de la gran importancia del cuidado de la salud
           cardiovascular, especialmente a medida que envejecemos, Manuel aplica
           los conocimientos científicos más actuales para mejorar la calidad de
           vida con la salud cardiovascular en el centro.
         </p>
-        <div class="card-actions justify-end mt-4">
-          <a
-            href="mailto:manuelrodriguez@plan.com"
-            class="btn m-auto bg-gray-500 border border-gray-300 dark:border-gray-600 text-white hover:text-black hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors duration-300 ease-in-out text-sm py-2 px-4"
-            >CONTACTAR</a
-          >
-        </div>
+
+        <a href="mailto:manuelrodriguez@plan.com" class="contact-button">
+          <mat-icon>email</mat-icon>
+          <span>Contactar</span>
+        </a>
       </div>
     </div>
-  </div>
 
-  <div class="containerCard">
-    <div
-      class="card card-compact w-70 shadow-lg dark:shadow-orange-100 bg-white dark:bg-gray-800 transition-all duration-300 ease-in-out"
-    >
-      <figure class="overflow-hidden">
+    <!-- Pilar Vázquez -->
+    <div class="trainer-card animate-slide-up" style="animation-delay: 0.2s">
+      <div class="card-image">
         <img
           src="assets/avatarpilar.svg"
           alt="Foto de primer plano de Pilar"
-          class="hover:opacity-90 transition-opacity duration-300"
+          class="trainer-photo"
         />
-      </figure>
-      <div class="card-body p-4">
-        <div class="space-y-2">
-          <h2 class="text-2xl font-bold text-gray-900 dark:text-white">
-            Pilar Vázquez
-          </h2>
-          <div class="bg-gray-300 dark:bg-gray-600 h-px"></div>
-          <p class="text-sm font-semibold text-gray-500 dark:text-gray-400">
-            Especialista en masa muscular
-          </p>
+        <div class="image-overlay">
+          <div class="specialty-badge">
+            <mat-icon>fitness_center</mat-icon>
+            <span>Masa muscular</span>
+          </div>
         </div>
-        <p class="text-gray-600 dark:text-gray-300 text-sm mt-4 h-72">
+      </div>
+
+      <div class="card-content">
+        <div class="trainer-header">
+          <h2 class="trainer-name">Pilar Vázquez</h2>
+          <div class="specialty-tag">
+            <mat-icon>fitness_center</mat-icon>
+            <span>Especialista en masa muscular</span>
+          </div>
+        </div>
+
+        <p class="trainer-bio">
           Desde una perspectiva del cuidado de la salud física y mental, Pilar
           se ha especializado en estos últimos años en desarrollar el potencial
           existente en todos los cuerpos, aumentando el bienestar de sus
           clientes y preparándolos para la práctica deportiva.
         </p>
-        <div class="card-actions justify-end mt-4">
-          <a
-            href="mailto:pilarvazquez@plan.com"
-            class="btn m-auto bg-gray-500 border border-gray-300 dark:border-gray-600 text-white hover:text-black hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors duration-300 ease-in-out text-sm py-2 px-4"
-            >CONTACTAR</a
-          >
-        </div>
+
+        <a href="mailto:pilarvazquez@plan.com" class="contact-button">
+          <mat-icon>email</mat-icon>
+          <span>Contactar</span>
+        </a>
       </div>
     </div>
   </div>

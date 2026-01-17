@@ -1,36 +1,273 @@
-.containerCard {
-  width: 30%;
-  margin: auto;
+.trainers-container {
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
-p {
-  padding: 20px;
+// Header
+.trainers-header {
+  text-align: center;
+  margin-bottom: 3rem;
+
+  .page-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 800;
+    margin-bottom: 1rem;
+
+    .title-icon {
+      font-size: 3rem;
+      width: 3rem;
+      height: 3rem;
+      color: #ffa600;
+
+      .dark & {
+        color: #8b7bd3;
+      }
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #ffa600 0%, #ff6600 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+
+      .dark & {
+        background: linear-gradient(135deg, #8b7bd3 0%, #6b5bb3 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+    }
+  }
+
+  .page-subtitle {
+    font-size: 1.125rem;
+    color: #64748b;
+    font-weight: 500;
+
+    .dark & {
+      color: #94a3b8;
+    }
+  }
 }
 
-$background-size-cover: cover;
+// Trainers Grid
+.trainers-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  padding: 0 1rem;
 
-%background-cover {
-  background-size: $background-size-cover;
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
 }
 
-.example-header-image {
-  @extend %background-cover;
-  background-image: url('/assets/avatarcarla.svg');
+// Trainer Card
+.trainer-card {
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  transition: all 0.4s ease;
+
+  .dark & {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  }
+
+  &:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+
+    .dark & {
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5);
+    }
+
+    .trainer-photo {
+      transform: scale(1.05);
+    }
+
+    .image-overlay {
+      opacity: 1;
+    }
+  }
 }
 
-.example-header-image2 {
-  @extend %background-cover;
-  background-image: url('/assets/avatarmanuel.svg');
+.card-image {
+  position: relative;
+  overflow: hidden;
+  height: 280px;
+
+  .trainer-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+  }
+
+  .image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+      to bottom,
+      transparent 0%,
+      rgba(0, 0, 0, 0.7) 100%
+    );
+    display: flex;
+    align-items: flex-end;
+    padding: 1.5rem;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+
+    .specialty-badge {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.625rem 1rem;
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 50px;
+      color: #1e293b;
+      font-weight: 700;
+      font-size: 0.875rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+
+      mat-icon {
+        color: #ffa600;
+        font-size: 1.25rem;
+        width: 1.25rem;
+        height: 1.25rem;
+
+        .dark & {
+          color: #8b7bd3;
+        }
+      }
+    }
+  }
 }
 
-.example-header-image3 {
-  @extend %background-cover;
-  background-image: url('/assets/avatarpilar.svg');
+.card-content {
+  padding: 1.75rem;
 }
 
-@media (max-width: 1300px) {
-  .containerCard {
-    width: 80%;
-    margin-bottom: 20pt;
+.trainer-header {
+  margin-bottom: 1.25rem;
+
+  .trainer-name {
+    font-size: 1.75rem;
+    font-weight: 800;
+    margin-bottom: 0.75rem;
+    color: #1e293b;
+
+    .dark & {
+      color: #f1f5f9;
+    }
+  }
+
+  .specialty-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: linear-gradient(135deg, rgba(255, 166, 0, 0.1), rgba(255, 102, 0, 0.05));
+    border-radius: 8px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #ffa600;
+
+    .dark & {
+      background: linear-gradient(135deg, rgba(139, 123, 211, 0.15), rgba(107, 91, 179, 0.05));
+      color: #8b7bd3;
+    }
+
+    mat-icon {
+      font-size: 1.125rem;
+      width: 1.125rem;
+      height: 1.125rem;
+    }
+  }
+}
+
+.trainer-bio {
+  line-height: 1.8;
+  color: #475569;
+  margin-bottom: 1.5rem;
+  min-height: 120px;
+
+  .dark & {
+    color: #cbd5e1;
+  }
+}
+
+.contact-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.875rem 1.5rem;
+  background: linear-gradient(135deg, #ffa600, #ff8800);
+  color: white;
+  text-decoration: none;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 0.9375rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(255, 166, 0, 0.3);
+
+  .dark & {
+    background: linear-gradient(135deg, #483d8b, #6b5bb3);
+    box-shadow: 0 4px 12px rgba(72, 61, 139, 0.3);
+  }
+
+  mat-icon {
+    font-size: 1.25rem;
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(255, 166, 0, 0.4);
+
+    .dark & {
+      box-shadow: 0 6px 16px rgba(72, 61, 139, 0.4);
+    }
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 700px) {
+  .trainers-header {
+    .page-title {
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+  }
+
+  .card-image {
+    height: 240px;
+  }
+
+  .card-content {
+    padding: 1.5rem;
+  }
+
+  .trainer-bio {
+    min-height: auto;
   }
 }

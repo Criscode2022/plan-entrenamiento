@@ -1,97 +1,130 @@
-<div class="flex justify-center md:hidden">
-  <mat-icon>maximize</mat-icon>
+<div class="aside-header md:hidden">
+  <div class="drag-indicator"></div>
+  <mat-icon class="drag-icon">expand_less</mat-icon>
 </div>
 
-<h2>Solicita tu plan personalizado</h2>
+<div class="aside-content">
+  <h2 class="aside-title">
+    <mat-icon class="title-icon">assignment</mat-icon>
+    Solicita tu plan personalizado
+  </h2>
 
-<form [formGroup]="form" class="flex flex-col gap-2">
-  <mat-form-field>
-    <mat-label>Nombre</mat-label>
-    <input matInput formControlName="nombre" maxlength="20" required />
-    <mat-error *ngIf="this.nombre?.hasError('required')">
-      Introduce tu nombre
-    </mat-error>
-  </mat-form-field>
+  <form [formGroup]="form" class="modern-form">
+    <div class="form-group">
+      <mat-form-field appearance="outline" class="modern-field">
+        <mat-label>Nombre completo</mat-label>
+        <input matInput formControlName="nombre" maxlength="20" required placeholder="Ej: Juan Pérez" />
+        <mat-icon matPrefix>person</mat-icon>
+        <mat-error *ngIf="this.nombre?.hasError('required')">
+          Por favor, introduce tu nombre
+        </mat-error>
+      </mat-form-field>
+    </div>
 
-  <mat-form-field>
-    <mat-label>Edad</mat-label>
-    <input matInput type="number" formControlName="edad" min="16" />
-    <mat-error *ngIf="this.edad?.errors"> Introduce una edad válida </mat-error>
-  </mat-form-field>
+    <div class="form-group">
+      <mat-form-field appearance="outline" class="modern-field">
+        <mat-label>Edad</mat-label>
+        <input matInput type="number" formControlName="edad" min="16" placeholder="Ej: 25" />
+        <mat-icon matPrefix>cake</mat-icon>
+        <mat-error *ngIf="this.edad?.errors">
+          Introduce una edad válida (mínimo 16 años)
+        </mat-error>
+      </mat-form-field>
+    </div>
 
-  <mat-form-field
-    matTooltip="Puedes calcular tu IMC en la sección 'Calcular IMC'"
-  >
-    <mat-label>IMC</mat-label>
-    <input matInput formControlName="IMC" readonly />
-    <mat-icon
-      class="text-black cursor-pointer"
-      routerLink="indicemasa"
-      matSuffix
-      >calculate</mat-icon
-    >
-    <mat-error *ngIf="this.IMC?.hasError('required')">
-      Calcula tu IMC en la sección "Calcular IMC"
-    </mat-error>
-  </mat-form-field>
-
-  <mat-form-field>
-    <mat-label>Email</mat-label>
-    <input matInput type="email" formControlName="email" maxlength="50" />
-    <mat-error *ngIf="this.email?.hasError('required')">
-      Introduce tu email
-    </mat-error>
-    <mat-error *ngIf="this.email?.hasError('email')">
-      Introduce un email válido
-    </mat-error>
-  </mat-form-field>
-
-  <mat-form-field>
-    <mat-label>Objetivo</mat-label>
-    <mat-select formControlName="selectOption">
-      <mat-option value="seleccionar" disabled
-        >Selecciona tu objetivo</mat-option
+    <div class="form-group">
+      <mat-form-field
+        appearance="outline"
+        class="modern-field"
+        matTooltip="Puedes calcular tu IMC en la sección 'Calcular IMC'"
       >
-      <mat-option value="perder grasa" (click)="entrenador = 'Carla Alonso'"
-        >Perder grasa</mat-option
-      >
-      <mat-option
-        value="mejorar tu salud cardiovascular"
-        (click)="entrenador = 'Manuel Rodríguez'"
-        >Mejorar tu salud cardiovascular</mat-option
-      >
-      <mat-option
-        value="conseguir masa muscular"
-        (click)="entrenador = 'Pilar Vázquez'"
-        >Conseguir masa muscular</mat-option
-      >
-    </mat-select>
-    <mat-error *ngIf="this.selectOption?.hasError('required')">
-      Selecciona tu objetivo
-    </mat-error>
-  </mat-form-field>
+        <mat-label>Índice de Masa Corporal (IMC)</mat-label>
+        <input matInput formControlName="IMC" readonly placeholder="Calcula tu IMC" />
+        <mat-icon matPrefix>monitor_weight</mat-icon>
+        <mat-icon
+          class="cursor-pointer hover:text-white transition-colors"
+          routerLink="indicemasa"
+          matSuffix
+        >
+          calculate
+        </mat-icon>
+        <mat-error *ngIf="this.IMC?.hasError('required')">
+          Calcula tu IMC en la sección "Calcular IMC"
+        </mat-error>
+      </mat-form-field>
+    </div>
 
-  <button
-    type="button"
-    class="btn btn-block border-none bg-secondary-light text-white"
-    (click)="reset()"
-  >
-    Borrar datos
-  </button>
+    <div class="form-group">
+      <mat-form-field appearance="outline" class="modern-field">
+        <mat-label>Correo electrónico</mat-label>
+        <input matInput type="email" formControlName="email" maxlength="50" placeholder="ejemplo@correo.com" />
+        <mat-icon matPrefix>email</mat-icon>
+        <mat-error *ngIf="this.email?.hasError('required')">
+          Por favor, introduce tu email
+        </mat-error>
+        <mat-error *ngIf="this.email?.hasError('email')">
+          Introduce un email válido
+        </mat-error>
+      </mat-form-field>
+    </div>
 
-  <button
-    type="button"
-    class="btn btn-block border-none bg-secondary-light text-white"
-    (click)="descargar()"
-  >
-    Descargar datos
-  </button>
+    <div class="form-group">
+      <mat-form-field appearance="outline" class="modern-field">
+        <mat-label>Tu objetivo</mat-label>
+        <mat-select formControlName="selectOption">
+          <mat-option value="seleccionar" disabled>
+            Selecciona tu objetivo
+          </mat-option>
+          <mat-option value="perder grasa" (click)="entrenador = 'Carla Alonso'">
+            🔥 Perder grasa
+          </mat-option>
+          <mat-option
+            value="mejorar tu salud cardiovascular"
+            (click)="entrenador = 'Manuel Rodríguez'"
+          >
+            ❤️ Mejorar salud cardiovascular
+          </mat-option>
+          <mat-option
+            value="conseguir masa muscular"
+            (click)="entrenador = 'Pilar Vázquez'"
+          >
+            💪 Conseguir masa muscular
+          </mat-option>
+        </mat-select>
+        <mat-icon matPrefix>flag</mat-icon>
+        <mat-error *ngIf="this.selectOption?.hasError('required')">
+          Selecciona tu objetivo
+        </mat-error>
+      </mat-form-field>
+    </div>
 
-  <button
-    type="button"
-    class="btn btn-block border-none bg-secondary-light text-white"
-    (click)="enviar()"
-  >
-    Enviar datos
-  </button>
-</form>
+    <div class="form-actions">
+      <button
+        type="button"
+        class="action-button reset-button"
+        (click)="reset()"
+      >
+        <mat-icon>refresh</mat-icon>
+        <span>Borrar</span>
+      </button>
+
+      <button
+        type="button"
+        class="action-button download-button"
+        (click)="descargar()"
+      >
+        <mat-icon>download</mat-icon>
+        <span>Descargar</span>
+      </button>
+
+      <button
+        type="submit"
+        class="action-button submit-button"
+        (click)="enviar()"
+      >
+        <mat-icon>send</mat-icon>
+        <span>Enviar</span>
+      </button>
+    </div>
+  </form>
+</div>

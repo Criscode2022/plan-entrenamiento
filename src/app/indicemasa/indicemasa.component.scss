@@ -1,56 +1,391 @@
-p {
-  font-style: italic;
+.imc-container {
+  max-width: 900px;
+  margin: 0 auto;
 }
 
-form {
-  width: 25%;
-}
-
-div:first-of-type {
-  border: solid black 1px;
-  display: block;
-  padding: 10pt;
-  border-radius: 5pt;
-  background-color: rgb(130, 141, 153);
-  color: white;
-  width: fit-content;
-  display: block;
-  float: right;
-  margin: 25pt;
-
-  a {
-    color: white;
-  }
-}
-
-mat-form-field {
-  width: 100%;
-  padding: 10px 0 10px 0;
-}
-
-mat-form-field:first-child {
-  margin: 28px 0 0 0;
-}
-
-#resultado {
-  margin: 5px;
-  font-weight: bold;
-  font-size: 1.1rem;
-  list-style: none;
-}
-
-@media (max-width: 830px) {
-  form {
-    width: 90%;
-  }
-}
-
-table,
-th,
-td {
+// Header
+.imc-header {
   text-align: center;
+  margin-bottom: 3rem;
 
-  border: solid black 1px;
+  .page-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 800;
+    margin-bottom: 1rem;
 
-  padding: 10pt;
+    .title-icon {
+      font-size: 3rem;
+      width: 3rem;
+      height: 3rem;
+      color: #ffa600;
+
+      .dark & {
+        color: #8b7bd3;
+      }
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #ffa600 0%, #ff6600 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+
+      .dark & {
+        background: linear-gradient(135deg, #8b7bd3 0%, #6b5bb3 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+    }
+  }
+
+  .page-subtitle {
+    font-size: 1.125rem;
+    color: #64748b;
+    font-weight: 500;
+
+    .dark & {
+      color: #94a3b8;
+    }
+  }
+}
+
+// Info Section
+.info-section {
+  margin-bottom: 2rem;
+}
+
+.info-card {
+  background: white;
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+
+  .dark & {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  }
+
+  .info-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    background: linear-gradient(135deg, #ffa600, #ff8800);
+    border-radius: 14px;
+    margin-bottom: 1.5rem;
+
+    .dark & {
+      background: linear-gradient(135deg, #483d8b, #6b5bb3);
+    }
+
+    mat-icon {
+      color: white;
+      font-size: 2rem;
+      width: 2rem;
+      height: 2rem;
+    }
+  }
+
+  .info-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: #1e293b;
+
+    .dark & {
+      color: #f1f5f9;
+    }
+  }
+
+  .info-text {
+    line-height: 1.8;
+    margin-bottom: 1rem;
+    color: #475569;
+
+    .dark & {
+      color: #cbd5e1;
+    }
+
+    &:last-of-type {
+      margin-bottom: 1.5rem;
+    }
+  }
+
+  .info-source {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem;
+    background: rgba(255, 166, 0, 0.05);
+    border-radius: 10px;
+    font-size: 0.875rem;
+
+    .dark & {
+      background: rgba(139, 123, 211, 0.1);
+    }
+
+    mat-icon {
+      color: #ffa600;
+      font-size: 1.25rem;
+      width: 1.25rem;
+      height: 1.25rem;
+
+      .dark & {
+        color: #8b7bd3;
+      }
+    }
+
+    .source-link {
+      color: #ffa600;
+      text-decoration: none;
+      font-weight: 600;
+      transition: opacity 0.2s;
+
+      .dark & {
+        color: #8b7bd3;
+      }
+
+      &:hover {
+        opacity: 0.8;
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+// Calculator Section
+.calculator-section {
+  margin-bottom: 2rem;
+}
+
+.calculator-card {
+  background: white;
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+
+  .dark & {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  }
+
+  .calculator-title {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    color: #1e293b;
+
+    .dark & {
+      color: #f1f5f9;
+    }
+
+    mat-icon {
+      color: #ffa600;
+      font-size: 2rem;
+      width: 2rem;
+      height: 2rem;
+
+      .dark & {
+        color: #8b7bd3;
+      }
+    }
+  }
+
+  .calculator-form {
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+
+      @media (max-width: 640px) {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    ::ng-deep .form-field {
+      width: 100%;
+
+      .mat-mdc-form-field-error {
+        font-weight: 500;
+      }
+
+      .unit-label {
+        color: #64748b;
+        font-weight: 600;
+        margin-left: 0.5rem;
+
+        .dark & {
+          color: #94a3b8;
+        }
+      }
+    }
+
+    .calculate-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      width: 100%;
+      padding: 1rem 2rem;
+      background: linear-gradient(135deg, #ffa600, #ff8800);
+      color: white;
+      border: none;
+      border-radius: 12px;
+      font-size: 1.125rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(255, 166, 0, 0.3);
+
+      .dark & {
+        background: linear-gradient(135deg, #483d8b, #6b5bb3);
+        box-shadow: 0 4px 12px rgba(72, 61, 139, 0.3);
+      }
+
+      mat-icon {
+        font-size: 1.5rem;
+        width: 1.5rem;
+        height: 1.5rem;
+      }
+
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 16px rgba(255, 166, 0, 0.4);
+
+        .dark & {
+          box-shadow: 0 6px 16px rgba(72, 61, 139, 0.4);
+        }
+      }
+
+      &:active {
+        transform: translateY(0);
+      }
+    }
+  }
+}
+
+// Result Section
+.result-section {
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 2px solid rgba(0, 0, 0, 0.1);
+
+  .dark & {
+    border-top-color: rgba(255, 255, 255, 0.1);
+  }
+}
+
+.result-card {
+  text-align: center;
+  padding: 2rem;
+  background: linear-gradient(135deg, rgba(255, 166, 0, 0.1), rgba(255, 136, 0, 0.05));
+  border-radius: 16px;
+  border: 2px solid rgba(255, 166, 0, 0.2);
+
+  .dark & {
+    background: linear-gradient(135deg, rgba(139, 123, 211, 0.15), rgba(107, 91, 179, 0.05));
+    border-color: rgba(139, 123, 211, 0.3);
+  }
+
+  .result-label {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #64748b;
+    margin-bottom: 0.5rem;
+
+    .dark & {
+      color: #94a3b8;
+    }
+  }
+
+  .result-value {
+    font-size: 4rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #ffa600, #ff6600);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 1.5rem;
+
+    .dark & {
+      background: linear-gradient(135deg, #8b7bd3, #6b5bb3);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+  }
+
+  .info-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background: white;
+    color: #ffa600;
+    border: 2px solid #ffa600;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    .dark & {
+      background: rgba(255, 255, 255, 0.1);
+      color: #8b7bd3;
+      border-color: #8b7bd3;
+    }
+
+    mat-icon {
+      font-size: 1.25rem;
+      width: 1.25rem;
+      height: 1.25rem;
+    }
+
+    &:hover {
+      background: #ffa600;
+      color: white;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(255, 166, 0, 0.3);
+
+      .dark & {
+        background: #8b7bd3;
+        box-shadow: 0 4px 12px rgba(139, 123, 211, 0.3);
+      }
+    }
+  }
+}
+
+@media (max-width: 700px) {
+  .imc-header {
+    .page-title {
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+  }
+
+  .info-card,
+  .calculator-card {
+    padding: 1.5rem;
+  }
+
+  .result-card {
+    padding: 1.5rem;
+
+    .result-value {
+      font-size: 3rem;
+    }
+  }
 }

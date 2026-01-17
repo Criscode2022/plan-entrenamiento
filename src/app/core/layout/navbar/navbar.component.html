@@ -1,54 +1,96 @@
-<div id="botonesDesktop">
-  <button
-    class="bg-brown-400"
-    routerLink="/"
-    mat-fab
-    color="primary"
-    aria-label="Example icon button with a home icon"
-  >
-    <mat-icon>home</mat-icon>
-  </button>
-
-  <button
-    routerLink="/indicemasa"
-    class="btn btn-block bg-primary-light dark:bg-primary-dark rounded shadow-xl border-none text-black dark:text-white hover:text-white"
-  >
-    Calcular IMC
-  </button>
-
-  <button
-    routerLink="/entrenadores"
-    class="btn btn-block bg-primary-light dark:bg-primary-dark rounded shadow-xl border-none text-black dark:text-white hover:text-white"
-  >
-    Entrenadores
-  </button>
-</div>
-
-<div id="botonesMobile">
-  <button
-    routerLink="/"
-    mat-fab
-    aria-label="Home icon button with a home icon"
-    class="bg-primary dark:bg-primary-dark dark:text-white"
-  >
-    <mat-icon>home</mat-icon>
-  </button>
-  <button
-    mat-fab
-    (click)="toggleGroup()"
-    class="bg-primary dark:bg-primary-dark text-black dark:text-white"
-  >
-    <mat-icon>{{ isHidden ? 'arrow_drop_up' : 'arrow_drop_down' }}</mat-icon>
-  </button>
-  <div *ngIf="isHidden" id="smalllinks">
-    <a routerLink="/indicemasa" (click)="toggleGroup()" mat-raised-button
-      >Calcular IMC</a
+<!-- Desktop Navigation -->
+<nav id="navDesktop" class="desktop-nav">
+  <div class="nav-brand">
+    <button
+      routerLink="/"
+      class="home-button"
+      aria-label="Ir al inicio"
+      mat-mini-fab
     >
-    <a routerLink="/entrenadores" (click)="toggleGroup()" mat-raised-button
-      >Entrenadores</a
-    >
-    <a routerLink="/historias" (click)="toggleGroup()" mat-raised-button
-      >Experiencias</a
-    >
+      <mat-icon>home</mat-icon>
+    </button>
   </div>
-</div>
+
+  <ul class="nav-links">
+    <li>
+      <a
+        routerLink="/indicemasa"
+        routerLinkActive="active"
+        class="nav-link"
+        [routerLinkActiveOptions]="{ exact: false }"
+      >
+        <mat-icon class="nav-icon">calculate</mat-icon>
+        <span class="nav-text">Calcular IMC</span>
+      </a>
+    </li>
+    <li>
+      <a
+        routerLink="/entrenadores"
+        routerLinkActive="active"
+        class="nav-link"
+        [routerLinkActiveOptions]="{ exact: false }"
+      >
+        <mat-icon class="nav-icon">fitness_center</mat-icon>
+        <span class="nav-text">Entrenadores</span>
+      </a>
+    </li>
+  </ul>
+
+  <button
+    (click)="toggleDarkMode()"
+    class="theme-toggle"
+    mat-mini-fab
+    aria-label="Cambiar tema"
+  >
+    <mat-icon>{{ isDarkMode ? 'light_mode' : 'dark_mode' }}</mat-icon>
+  </button>
+</nav>
+
+<!-- Mobile Navigation -->
+<nav id="navMobile" class="mobile-nav">
+  <button
+    routerLink="/"
+    class="mobile-home-button"
+    mat-fab
+    aria-label="Ir al inicio"
+  >
+    <mat-icon>home</mat-icon>
+  </button>
+
+  <button
+    (click)="toggleGroup()"
+    class="mobile-menu-button"
+    mat-fab
+    aria-label="Abrir menú"
+  >
+    <mat-icon>{{ isHidden ? 'close' : 'menu' }}</mat-icon>
+  </button>
+
+  <button
+    (click)="toggleDarkMode()"
+    class="mobile-theme-button"
+    mat-fab
+    aria-label="Cambiar tema"
+  >
+    <mat-icon>{{ isDarkMode ? 'light_mode' : 'dark_mode' }}</mat-icon>
+  </button>
+
+  <div *ngIf="isHidden" class="mobile-menu animate-slide-down">
+    <a
+      routerLink="/indicemasa"
+      (click)="toggleGroup()"
+      class="mobile-menu-item"
+    >
+      <mat-icon>calculate</mat-icon>
+      <span>Calcular IMC</span>
+    </a>
+    <a
+      routerLink="/entrenadores"
+      (click)="toggleGroup()"
+      class="mobile-menu-item"
+    >
+      <mat-icon>fitness_center</mat-icon>
+      <span>Entrenadores</span>
+    </a>
+  </div>
+</nav>

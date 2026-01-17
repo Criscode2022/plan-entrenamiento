@@ -1,0 +1,23 @@
+<div class="mb-8">
+  <h2
+    *ngIf="title"
+    [class]="
+      centered
+        ? 'text-3xl md:text-4xl font-bold text-center mb-4 bg-gradient-to-r from-primary-light to-orange-600 dark:from-primary-dark dark:to-purple-600 bg-clip-text text-transparent'
+        : 'text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-primary-light to-orange-600 dark:from-primary-dark dark:to-purple-600 bg-clip-text text-transparent'
+    "
+  >
+    {{ title }}
+  </h2>
+  <p
+    *ngIf="subtitle"
+    [class]="
+      centered
+        ? 'text-gray-600 dark:text-gray-400 text-center mb-6'
+        : 'text-gray-600 dark:text-gray-400 mb-6'
+    "
+  >
+    {{ subtitle }}
+  </p>
+  <ng-content></ng-content>
+</div>

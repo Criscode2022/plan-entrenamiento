@@ -1,59 +1,106 @@
-<h2>¿Qué es el Índice de Masa Muscular?</h2>
-
-<p>
-  El índice de masa corporal (IMC) es el peso de una persona en kilogramos
-  dividido por el cuadrado de la estatura en metros. El IMC es un método de
-  evaluación fácil y económico para la categoría de peso: bajo peso, peso
-  saludable, sobrepeso, y obesidad.
-</p>
-
-<p>
-  El IMC no mide la grasa corporal directamente, pero el IMC se correlaciona
-  moderadamente con medidas más directas de la grasa corporal. Además, el IMC
-  parece estar tan fuertemente correlacionado con diversos resultados
-  metabólicos y de enfermedades como lo están estas medidas más directas de la
-  grasa corporal.
-</p>
-
-<div>
-  Fuente:
-  <a
-    href="https://www.cdc.gov/healthyweight/spanish/assessing/bmi/adult_bmi/index.html"
-    target="_blank"
-    >Centros para el Control y Prevención de Enfermedades</a
-  >
-</div>
-
-<form
-  [formGroup]="form"
-  (ngSubmit)="calcularIMC(altura?.value ?? 0, peso?.value ?? 0)"
-  novalidate
->
-  <mat-form-field>
-    <mat-label>Peso en Kg</mat-label>
-    <input matInput type="number" formControlName="peso" min="0" max="400" />
-    <mat-error *ngIf="this.peso?.errors"> Introduce un peso válido</mat-error>
-  </mat-form-field>
-
-  <mat-form-field>
-    <mat-label>Altura en cm</mat-label>
-    <input matInput type="number" formControlName="altura" min="0" max="250" />
-    <mat-error *ngIf="this.altura?.errors"
-      >Introduce una altura válida</mat-error
-    >
-  </mat-form-field>
-
-  <button class="btn btn-block border-none bg-secondary-light text-white">
-    Calcular IMC
-  </button>
-</form>
-
-<ng-container *ngIf="!!IMC">
-  <div id="resultado">
-    IMC: {{ IMC }}
-
-    <button mat-mini-fab color="warn" (click)="openDialog()" class="m-5">
-      <mat-icon>info</mat-icon>
-    </button>
+<div class="imc-container animate-fade-in">
+  <!-- Header Section -->
+  <div class="imc-header">
+    <h1 class="page-title">
+      <mat-icon class="title-icon">monitor_weight</mat-icon>
+      <span class="gradient-text">Calculadora de IMC</span>
+    </h1>
+    <p class="page-subtitle">
+      Índice de Masa Corporal - Tu primer paso hacia una vida más saludable
+    </p>
   </div>
-</ng-container>
+
+  <!-- Info Section -->
+  <div class="info-section animate-slide-up">
+    <div class="info-card">
+      <div class="info-icon">
+        <mat-icon>info</mat-icon>
+      </div>
+      <div class="info-content">
+        <h3 class="info-title">¿Qué es el IMC?</h3>
+        <p class="info-text">
+          El índice de masa corporal (IMC) es el peso de una persona en kilogramos
+          dividido por el cuadrado de la estatura en metros. El IMC es un método de
+          evaluación fácil y económico para la categoría de peso: bajo peso, peso
+          saludable, sobrepeso, y obesidad.
+        </p>
+        <p class="info-text">
+          El IMC no mide la grasa corporal directamente, pero se correlaciona
+          moderadamente con medidas más directas de la grasa corporal. Además, el IMC
+          parece estar fuertemente correlacionado con diversos resultados
+          metabólicos y de enfermedades.
+        </p>
+        <div class="info-source">
+          <mat-icon>verified</mat-icon>
+          <span>Fuente:
+            <a
+              href="https://www.cdc.gov/healthyweight/spanish/assessing/bmi/adult_bmi/index.html"
+              target="_blank"
+              class="source-link"
+            >
+              Centros para el Control y Prevención de Enfermedades
+            </a>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Calculator Section -->
+  <div class="calculator-section animate-slide-up" style="animation-delay: 0.1s">
+    <div class="calculator-card">
+      <h2 class="calculator-title">
+        <mat-icon>calculate</mat-icon>
+        Calcula tu IMC
+      </h2>
+
+      <form
+        [formGroup]="form"
+        (ngSubmit)="calcularIMC(altura?.value ?? 0, peso?.value ?? 0)"
+        novalidate
+        class="calculator-form"
+      >
+        <div class="form-row">
+          <mat-form-field appearance="outline" class="form-field">
+            <mat-label>Peso</mat-label>
+            <input matInput type="number" formControlName="peso" min="0" max="400" placeholder="Ej: 70" />
+            <span matTextSuffix class="unit-label">kg</span>
+            <mat-icon matPrefix>scale</mat-icon>
+            <mat-error *ngIf="this.peso?.errors">
+              Introduce un peso válido (0-400 kg)
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="form-field">
+            <mat-label>Altura</mat-label>
+            <input matInput type="number" formControlName="altura" min="0" max="250" placeholder="Ej: 175" />
+            <span matTextSuffix class="unit-label">cm</span>
+            <mat-icon matPrefix>height</mat-icon>
+            <mat-error *ngIf="this.altura?.errors">
+              Introduce una altura válida (0-250 cm)
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <button type="submit" class="calculate-button">
+          <mat-icon>analytics</mat-icon>
+          <span>Calcular mi IMC</span>
+        </button>
+      </form>
+
+      <!-- Result Section -->
+      <ng-container *ngIf="!!IMC">
+        <div class="result-section animate-scale-in">
+          <div class="result-card">
+            <div class="result-label">Tu IMC es</div>
+            <div class="result-value">{{ IMC }}</div>
+            <button class="info-button" (click)="openDialog()">
+              <mat-icon>help</mat-icon>
+              <span>¿Qué significa este resultado?</span>
+            </button>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</div>
