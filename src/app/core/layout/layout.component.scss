@@ -12,7 +12,6 @@
 .navbar-container {
   background: linear-gradient(180deg, rgba(255, 166, 0, 0.05) 0%, transparent 100%);
   border-right: 1px solid rgba(0, 0, 0, 0.08);
-  backdrop-filter: blur(10px);
   position: sticky;
   top: 0;
   height: 100vh;
@@ -67,7 +66,7 @@
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    padding-bottom: 140px; // Space for fixed bottom nav (approx 80px) + aside (approx 60px)
+    padding-bottom: 100px; // Space for fixed bottom nav handle + aside
   }
 
   .navbar-container {
@@ -89,7 +88,7 @@
 
   .aside-container {
     position: fixed;
-    bottom: 80px; // Height of bottom nav
+    bottom: 40px; // Height of bottom nav handle bar
     left: 0;
     right: 0;
     height: auto;

@@ -82,56 +82,21 @@
         <mat-icon>fitness_center</mat-icon>
         <span>Entrenadores</span>
       </a>
-    </div>
-  </div>
-
-  <!-- Bottom Nav Bar (Always Visible) -->
-  <div class="mobile-nav-bar">
-    <!-- Handle to expand menu -->
-    <div class="nav-handle" (click)="toggleMenu()">
-      <div class="handle-bar"></div>
-    </div>
-
-    <!-- Navigation Items -->
-    <div class="nav-items">
-      <a
-        routerLink="/"
-        class="nav-item"
-        routerLinkActive="active"
-        [routerLinkActiveOptions]="{ exact: true }"
-      >
-        <mat-icon>home</mat-icon>
-        <span class="nav-label">Inicio</span>
-      </a>
-
-      <a
-        routerLink="/indicemasa"
-        class="nav-item"
-        routerLinkActive="active"
-        [routerLinkActiveOptions]="{ exact: false }"
-      >
-        <mat-icon>calculate</mat-icon>
-        <span class="nav-label">IMC</span>
-      </a>
-
-      <a
-        routerLink="/entrenadores"
-        class="nav-item"
-        routerLinkActive="active"
-        [routerLinkActiveOptions]="{ exact: false }"
-      >
-        <mat-icon>fitness_center</mat-icon>
-        <span class="nav-label">Entrenadores</span>
-      </a>
-
       <button
         (click)="toggleDarkMode()"
-        class="nav-item nav-button"
+        class="theme-toggle-item"
         aria-label="Cambiar tema"
       >
         <mat-icon>{{ isDarkMode ? 'light_mode' : 'dark_mode' }}</mat-icon>
-        <span class="nav-label">Tema</span>
+        <span>{{ isDarkMode ? 'Modo claro' : 'Modo oscuro' }}</span>
       </button>
+    </div>
+  </div>
+
+  <!-- Bottom Handle Bar (Only visible element) -->
+  <div class="mobile-nav-bar">
+    <div class="nav-handle" (click)="toggleMenu()">
+      <div class="handle-bar"></div>
     </div>
   </div>
 </nav>
