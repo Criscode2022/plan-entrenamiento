@@ -47,50 +47,92 @@
 </nav>
 
 <!-- Mobile Navigation -->
-<nav id="navMobile" class="mobile-nav">
-  <button
-    routerLink="/"
-    class="mobile-home-button"
-    mat-fab
-    aria-label="Ir al inicio"
-  >
-    <mat-icon>home</mat-icon>
-  </button>
+<nav id="navMobile" class="mobile-nav" [class.expanded]="isMenuExpanded">
+  <!-- Expandable Menu Section -->
+  <div class="mobile-menu-expanded" [class.visible]="isMenuExpanded">
+    <div class="menu-content">
+      <h3 class="menu-title">Navegación</h3>
+      <a
+        routerLink="/"
+        (click)="closeMenu()"
+        class="menu-item"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        <mat-icon>home</mat-icon>
+        <span>Inicio</span>
+      </a>
+      <a
+        routerLink="/indicemasa"
+        (click)="closeMenu()"
+        class="menu-item"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: false }"
+      >
+        <mat-icon>calculate</mat-icon>
+        <span>Calcular IMC</span>
+      </a>
+      <a
+        routerLink="/entrenadores"
+        (click)="closeMenu()"
+        class="menu-item"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: false }"
+      >
+        <mat-icon>fitness_center</mat-icon>
+        <span>Entrenadores</span>
+      </a>
+    </div>
+  </div>
 
-  <button
-    (click)="toggleGroup()"
-    class="mobile-menu-button"
-    mat-fab
-    aria-label="Abrir menú"
-  >
-    <mat-icon>{{ isHidden ? 'close' : 'menu' }}</mat-icon>
-  </button>
+  <!-- Bottom Nav Bar (Always Visible) -->
+  <div class="mobile-nav-bar">
+    <!-- Handle to expand menu -->
+    <div class="nav-handle" (click)="toggleMenu()">
+      <div class="handle-bar"></div>
+    </div>
 
-  <button
-    (click)="toggleDarkMode()"
-    class="mobile-theme-button"
-    mat-fab
-    aria-label="Cambiar tema"
-  >
-    <mat-icon>{{ isDarkMode ? 'light_mode' : 'dark_mode' }}</mat-icon>
-  </button>
+    <!-- Navigation Items -->
+    <div class="nav-items">
+      <a
+        routerLink="/"
+        class="nav-item"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        <mat-icon>home</mat-icon>
+        <span class="nav-label">Inicio</span>
+      </a>
 
-  <div *ngIf="isHidden" class="mobile-menu animate-slide-down">
-    <a
-      routerLink="/indicemasa"
-      (click)="toggleGroup()"
-      class="mobile-menu-item"
-    >
-      <mat-icon>calculate</mat-icon>
-      <span>Calcular IMC</span>
-    </a>
-    <a
-      routerLink="/entrenadores"
-      (click)="toggleGroup()"
-      class="mobile-menu-item"
-    >
-      <mat-icon>fitness_center</mat-icon>
-      <span>Entrenadores</span>
-    </a>
+      <a
+        routerLink="/indicemasa"
+        class="nav-item"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: false }"
+      >
+        <mat-icon>calculate</mat-icon>
+        <span class="nav-label">IMC</span>
+      </a>
+
+      <a
+        routerLink="/entrenadores"
+        class="nav-item"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: false }"
+      >
+        <mat-icon>fitness_center</mat-icon>
+        <span class="nav-label">Entrenadores</span>
+      </a>
+
+      <button
+        (click)="toggleDarkMode()"
+        class="nav-item nav-button"
+        aria-label="Cambiar tema"
+      >
+        <mat-icon>{{ isDarkMode ? 'light_mode' : 'dark_mode' }}</mat-icon>
+        <span class="nav-label">Tema</span>
+      </button>
+    </div>
   </div>
 </nav>
+

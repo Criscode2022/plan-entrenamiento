@@ -6,8 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent implements OnInit {
-  isHidden = false;
   isDarkMode = false;
+  isMenuExpanded = false;
 
   ngOnInit() {
     // Check for saved dark mode preference
@@ -20,8 +20,12 @@ export class NavbarComponent implements OnInit {
     }
   }
 
-  toggleGroup() {
-    this.isHidden = !this.isHidden;
+  toggleMenu() {
+    this.isMenuExpanded = !this.isMenuExpanded;
+  }
+
+  closeMenu() {
+    this.isMenuExpanded = false;
   }
 
   toggleDarkMode() {
