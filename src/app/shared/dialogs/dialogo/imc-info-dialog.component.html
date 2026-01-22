@@ -1,28 +1,60 @@
-<h2 mat-dialog-title class="text-center">Niveles IMC</h2>
-<mat-dialog-content class="mat-typography">
-  <table>
-    <tr>
-      <th id="uno">IMC</th>
-      <th id="dos">Nivel de peso</th>
-    </tr>
-    <tr>
-      <td>Por debajo de 18.5</td>
-      <td>Bajo peso</td>
-    </tr>
-    <tr>
-      <td>18.5 - 24.9</td>
-      <td>Normal</td>
-    </tr>
-    <tr>
-      <td>25.0 - 29.9</td>
-      <td>Sobrepeso</td>
-    </tr>
-    <tr>
-      <td id="tres">30.0 o más</td>
-      <td id="cuatro">Obesidad</td>
-    </tr>
-  </table>
-</mat-dialog-content>
-<mat-dialog-actions align="end">
-  <button mat-button mat-dialog-close>Cerrar</button>
-</mat-dialog-actions>
+<div class="dialog-container">
+  <div class="dialog-header">
+    <mat-icon class="header-icon">info</mat-icon>
+    <h2 mat-dialog-title>Interpretación del IMC</h2>
+  </div>
+
+  <mat-dialog-content class="dialog-content">
+    <p class="dialog-description">
+      El IMC se utiliza como una herramienta de detección para identificar posibles problemas de peso en adultos.
+    </p>
+
+    <div class="bmi-categories">
+      <div class="bmi-category underweight">
+        <div class="category-header">
+          <mat-icon>trending_down</mat-icon>
+          <span class="category-label">Bajo peso</span>
+        </div>
+        <div class="category-range">&lt; 18.5</div>
+      </div>
+
+      <div class="bmi-category normal">
+        <div class="category-header">
+          <mat-icon>check_circle</mat-icon>
+          <span class="category-label">Peso normal</span>
+        </div>
+        <div class="category-range">18.5 - 24.9</div>
+      </div>
+
+      <div class="bmi-category overweight">
+        <div class="category-header">
+          <mat-icon>trending_up</mat-icon>
+          <span class="category-label">Sobrepeso</span>
+        </div>
+        <div class="category-range">25.0 - 29.9</div>
+      </div>
+
+      <div class="bmi-category obese">
+        <div class="category-header">
+          <mat-icon>warning</mat-icon>
+          <span class="category-label">Obesidad</span>
+        </div>
+        <div class="category-range">&geq; 30.0</div>
+      </div>
+    </div>
+
+    <div class="dialog-note">
+      <mat-icon>info</mat-icon>
+      <p>
+        El IMC no mide la grasa corporal directamente. Si tienes preguntas sobre tu IMC,
+        consulta con un profesional de la salud.
+      </p>
+    </div>
+  </mat-dialog-content>
+
+  <mat-dialog-actions class="dialog-actions">
+    <button mat-flat-button color="primary" mat-dialog-close>
+      Entendido
+    </button>
+  </mat-dialog-actions>
+</div>

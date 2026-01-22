@@ -1,30 +1,10 @@
+:host {
+  display: block;
+  width: 100%;
+  min-height: 100%;
+}
+
 .router-outlet-container {
-  margin: 40pt;
-  min-height: 100vh;
-}
-
-h1 {
-  text-align: center;
-  font-weight: bolder;
-  text-shadow: 0 0 1px rgba(24, 10, 153, 0.4);
-  font-size: 2rem;
-  padding: 30px;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-h2 {
-  margin-left: 10px;
-}
-@media (max-width: 700px) {
-  :host {
-    margin-left: 50pt;
-  }
-
-  .router-outlet-container {
-    margin: 20pt;
-    min-height: 100vh;
-  }
+  width: 100%;
+  min-height: 100%;
 }
